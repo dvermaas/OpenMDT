@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    {% if latest_report_list %}
+        <ul>
+        {% for report in latest_report_list %}
+            <li><a href="/portal/{{ report.id }}/">{{ report.title }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+{% endblock %}
