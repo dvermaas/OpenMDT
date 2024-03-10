@@ -3,13 +3,26 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    {% if latest_report_list %}
-        <ul>
-        {% for report in latest_report_list %}
-            <li><a href="/portal/{{ report.id }}/">{{ report.title }}</a></li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No polls are available.</p>
-    {% endif %}
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Created By</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in latest_report_list %}
+                    <tr>
+                        <td><a href="/portal/{{ report.id }}/">{{ report.id }}</a></td>
+                        <td>{{ report.title }}</td>
+                        <td>{{ report.created_by }}</td>
+                        <td>{{ report.created_at.date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

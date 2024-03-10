@@ -3,5 +3,18 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    {{ report.title }}, created on {{ created_at }}
+    <div class="container">
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <td>{{ report.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ report.title }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
