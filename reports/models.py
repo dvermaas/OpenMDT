@@ -3,8 +3,8 @@ from django.db import models
 
 
 class Report(models.Model):
-    #label =
-    #status =
+    # label =
+    # status =
     title = models.CharField(max_length=256)
     created_at = models.DateTimeField(auto_now_add=True)
     last_modified_at = models.DateTimeField(auto_now=True)

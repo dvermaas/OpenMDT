@@ -35,11 +35,11 @@ def delete(request, report_id):
 
 
 def add(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = YourModelForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index')  # Redirect to your index page or any other page
+            return redirect("index")  # Redirect to your index page or any other page
     else:
         form = YourModelForm()
-    return render(request, 'reports/add.html', {'form': form})
+    return render(request, "reports/add.html", {"form": form})
