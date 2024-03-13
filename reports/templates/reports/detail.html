@@ -4,6 +4,8 @@
 
 {% block content %}
     <div class="container">
+        <a class="btn btn-info" href="/reports/edit"><i class="bi bi-pencil-square h5"></i>Edit</a>
+        <a class="btn btn-info" href="/reports/delete"><i class="bi bi-trash h5"></i>Delete</a>
         <table class="table table-striped">
             <tbody>
                 <tr>
@@ -13,6 +15,14 @@
                 <tr>
                     <th>Name</th>
                     <td>{{ report.title }}</td>
+                </tr>
+                <tr>
+                    <th>Created By</th>
+                    <td>{{ report.created_by }}</td>
+                </tr>
+                <tr>
+                    <th>Created At</th>
+                    <td>{{ report.created_at.date }}</td>
                 </tr>
             </tbody>
         </table>

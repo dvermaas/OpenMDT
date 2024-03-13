@@ -4,6 +4,7 @@
 
 {% block content %}
     <div class="container">
+        <a class="btn btn-info" href="/reports/add"><i class="bi bi-plus h5"></i>Add Report</a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -11,15 +12,20 @@
                     <th>Title</th>
                     <th>Created By</th>
                     <th>Created At</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for report in latest_report_list %}
                     <tr>
-                        <td><a href="/portal/{{ report.id }}/">{{ report.id }}</a></td>
+                        <td><a href="/portal/detail/{{ report.id }}/">{{ report.id }}</a></td>
                         <td>{{ report.title }}</td>
                         <td>{{ report.created_by }}</td>
                         <td>{{ report.created_at.date }}</td>
+                        <td>
+                            <a class="btn btn-info" href="/portal/detail/{{ report.id }}/"><i class="bi bi-pencil-square h6"></i></a>
+                            <a class="btn btn-danger" href="/portal/delete/{{ report.id }}/"><i class="bi bi-trash h6"></i></a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
