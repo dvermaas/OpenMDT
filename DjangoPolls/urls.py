@@ -28,5 +28,6 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("__debug__/", include("debug_toolbar.urls")),
     path("reports/", include("reports.urls")),
+    path("profiles/", include("profiles.urls")),
     path("api/", api.urls),
 ]

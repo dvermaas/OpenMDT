@@ -2,12 +2,13 @@
 
 {% block content %}
     <div class="container">
-        <a class="btn btn-info" href="/reports/add"><i class="bi bi-plus h5"></i>Add Report</a>
+        <a class="btn btn-info" href="/reports/create"><i class="bi bi-plus h5"></i>Add Report</a>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
+                    <th>Tags</th>
                     <th>Created By</th>
                     <th>Created At</th>
                     <th>Actions</th>
@@ -16,13 +17,18 @@
             <tbody>
                 {% for report in latest_report_list %}
                     <tr>
-                        <td><a href="/portal/detail/{{ report.id }}/">{{ report.id }}</a></td>
-                        <td>{{ report.title }}</td>
+                        <td><a href="/reports/detail/{{ report.id }}/">{{ report.id }}</a></td>
+                        <td>{{ report }}</td>
+                        <td>
+                            {% for tag in report.tags.all %}
+                                <span class="badge rounded-pill text-bg-info">{{ tag }}</span>
+                            {% endfor %}
+                        </td>
                         <td>{{ report.created_by }}</td>
                         <td>{{ report.created_at.date }}</td>
                         <td>
-                            <a class="btn btn-info" href="/portal/detail/{{ report.id }}/"><i class="bi bi-pencil-square h6"></i></a>
-                            <a class="btn btn-danger" href="/portal/delete/{{ report.id }}/"><i class="bi bi-trash h6"></i></a>
+                            <a class="btn btn-info" href="/reports/detail/{{ report.id }}/"><i class="bi bi-pencil-square h6"></i></a>
+                            <a class="btn btn-danger" href="/reports/delete/{{ report.id }}/"><i class="bi bi-trash h6"></i></a>
                         </td>
                     </tr>
                 {% endfor %}

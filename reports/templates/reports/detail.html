@@ -2,8 +2,8 @@
 
 {% block content %}
     <div class="container">
-        <a class="btn btn-info" href="/reports/edit"><i class="bi bi-pencil-square h5"></i>Edit</a>
-        <a class="btn btn-info" href="/reports/delete"><i class="bi bi-trash h5"></i>Delete</a>
+        <a class="btn btn-info" href="/reports/edit/{{ report.id }}"><i class="bi bi-pencil-square h5"></i>Edit</a>
+        <a class="btn btn-info" href="/reports/delete/{{ report.id }}"><i class="bi bi-trash h5"></i>Delete</a>
         <table class="table table-striped">
             <tbody>
                 <tr>

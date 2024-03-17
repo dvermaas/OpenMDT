@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <a class="btn btn-info" href="/profiles/create"><i class="bi bi-plus h5"></i>Add profile</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for profile in latest_profile_list %}
+                    <tr>
+                        <td><a href="/profiles/detail/{{ profile.id }}/">{{ profile.id }}</a></td>
+                        <td>{{ profile }}</td>
+                        <td>
+                            <a class="btn btn-info" href="/profiles/detail/{{ profile.id }}/"><i class="bi bi-pencil-square h6"></i></a>
+                            <a class="btn btn-danger" href="/profiles/delete/{{ profile.id }}/"><i class="bi bi-trash h6"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}
