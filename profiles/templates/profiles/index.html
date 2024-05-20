@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container">
-        <a class="btn btn-info" href="/profiles/create"><i class="bi bi-plus h5"></i>Add profile</a>
+    <div class="container  mt-4">
+        <a class="btn btn-info" href="/profiles/create"><i class="bi bi-plus h5"></i>Add Profile</a>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Actions</th>
+                    <th>Tags</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,8 +17,9 @@
                         <td><a href="/profiles/detail/{{ profile.id }}/">{{ profile.id }}</a></td>
                         <td>{{ profile }}</td>
                         <td>
-                            <a class="btn btn-info" href="/profiles/detail/{{ profile.id }}/"><i class="bi bi-pencil-square h6"></i></a>
-                            <a class="btn btn-danger" href="/profiles/delete/{{ profile.id }}/"><i class="bi bi-trash h6"></i></a>
+                            {% for tag in profile.tags.all %}
+                                <span class="badge rounded-pill text-bg-info">{{ tag }}</span>
+                            {% endfor %}
                         </td>
                     </tr>
                 {% endfor %}

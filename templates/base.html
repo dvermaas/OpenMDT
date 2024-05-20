@@ -20,14 +20,21 @@
 <body>
   <main>
     {% include "navbar.html" %}
+  
+{#    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">#}
+{#      Launch demo modal#}
+{#    </button>#}
+
+    {% include "modal.html" %}
     
-    <div class="alert alert-info alert-dismissible fade show" role="alert">
-      Test alert
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+{#    <div class="alert alert-info alert-dismissible fade show" role="alert">#}
+{#      Test alert#}
+{#      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>#}
+{#    </div>#}
 
     {% block content %}
     {% endblock content %}
+  
   </main>
 </body>
 

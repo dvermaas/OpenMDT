@@ -9,7 +9,7 @@ from .forms import YourModelForm
 
 class ReportCreateView(LoginRequiredMixin, CreateView):
     model = Report
-    # fields = ["title"]
+    # fields = ["title", "is_warrant", "is_processed", "is_plead_guilty"]
     form_class = YourModelForm
     template_name = "reports/create.html"
     success_url = "/reports"
@@ -40,4 +40,4 @@ def edit(request, report_id):
 def delete(request, report_id):
     report = Report.objects.get(id=report_id)
     report.delete()
-    return render(request, "reports/index.html")
+    return index(request)

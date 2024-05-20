@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container">
+    <div class="container  mt-4">
         <a class="btn btn-info" href="/reports/create"><i class="bi bi-plus h5"></i>Add Report</a>
         <table class="table table-striped">
             <thead>
@@ -11,7 +11,6 @@
                     <th>Tags</th>
                     <th>Created By</th>
                     <th>Created At</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,11 +24,7 @@
                             {% endfor %}
                         </td>
                         <td>{{ report.created_by }}</td>
-                        <td>{{ report.created_at.date }}</td>
-                        <td>
-                            <a class="btn btn-info" href="/reports/detail/{{ report.id }}/"><i class="bi bi-pencil-square h6"></i></a>
-                            <a class="btn btn-danger" href="/reports/delete/{{ report.id }}/"><i class="bi bi-trash h6"></i></a>
-                        </td>
+                        <td>{{ report.created_at }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

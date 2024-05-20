@@ -1,28 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container">
+    <div class="container  mt-4">
         <a class="btn btn-info" href="/reports/edit/{{ report.id }}"><i class="bi bi-pencil-square h5"></i>Edit</a>
-        <a class="btn btn-info" href="/reports/delete/{{ report.id }}"><i class="bi bi-trash h5"></i>Delete</a>
-        <table class="table table-striped">
-            <tbody>
-                <tr>
-                    <th>ID</th>
-                    <td>{{ report.id }}</td>
-                </tr>
-                <tr>
-                    <th>Name</th>
-                    <td>{{ report.title }}</td>
-                </tr>
-                <tr>
-                    <th>Created By</th>
-                    <td>{{ report.created_by }}</td>
-                </tr>
-                <tr>
-                    <th>Created At</th>
-                    <td>{{ report.created_at.date }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <a class="btn btn-danger" href="/reports/delete/{{ report.id }}"><i class="bi bi-trash h5"></i>Delete</a>
+
+        <div class="row">
+            <div class="col-md-11">
+                <p style="background-color:darkgreen;">
+                    <b>Viewing Report #{{ report.id }}</b><br>
+                    Created by {{ report.created_by }} at {{ report.created_at }}
+                </p>
+
+                <p style="background-color:darkblue;">
+                    <b>{{ report }}</b><br>
+                </p>
+            </div>
+        </div>
     </div>
 {% endblock content %}
