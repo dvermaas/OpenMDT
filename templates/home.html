@@ -2,11 +2,41 @@
 
 {% block content %}
     <div class="container">
-        {% if user.is_authenticated %}
-        Hi {{ user.username }}!
-        {% else %}
-        <p>You are not logged in</p>
-        <a href="{% url 'login' %}">Log In</a>
-        {% endif %}
+        <div class="row mt-4">
+
+            <div class="col-md-4">
+                <div class="card bg-body-secondary mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Warrants
+{#                            <span>| Today</span>#}
+                        </h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mt-4">
+                  <div class="card-header">
+                    Announcements
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mt-4">
+                  <div class="card-header">
+                    BOLO
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock content %}

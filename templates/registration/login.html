@@ -4,17 +4,24 @@
 
 {% block content %}
     <div class="container">
-        <form method="post">
-          {% csrf_token %}
-          <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" name="username" class="form-control" id="username">
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="password">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        <div class="card mt-4 position-absolute top-50 start-50 translate-middle" style="width:400px;">
+            <div class="card-header">
+                LOGIN
+            </div>
+            <div class="card-body">
+                <form method="post">
+                  {% csrf_token %}
+                  <div class="form-floating mb-3">
+                    <input type="text" name="username" class="form-control" id="username" placeholder="">
+                    <label for="username" class="form-label">Username</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="">
+                    <label for="password" class="form-label">Password</label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
 {% endblock content %}
