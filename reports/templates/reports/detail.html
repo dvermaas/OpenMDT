@@ -1,20 +1,67 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container  mt-4">
-        <a class="btn btn-info" href="/reports/edit/{{ report.id }}"><i class="bi bi-pencil-square h5"></i>Edit</a>
-        <a class="btn btn-danger" href="/reports/delete/{{ report.id }}"><i class="bi bi-trash h5"></i>Delete</a>
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md-9">
 
-        <div class="row">
-            <div class="col-md-11">
-                <p style="background-color:darkgreen;">
-                    <b>Viewing Report #{{ report.id }}</b><br>
-                    Created by {{ report.created_by }} at {{ report.created_at }}
-                </p>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <b>Viewing Report #{{ report.id }}</b><br>
+                                Created by {{ report.created_by }} at {{ report.created_at }}
+                            </div>
+                            <div class="col-md-6">
+                                <a class="btn btn-info" href="/reports/edit/{{ report.id }}"><i
+                                        class="bi bi-pencil-square h5"></i>Edit</a>
+                                <a class="btn btn-danger" href="/reports/delete/{{ report.id }}">
+                                    <iclass
+                                    ="bi bi-trash h5"></i>Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        my name is slims shady<br>
+                        report
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        Suspects
+{#                        <a href="/reports/{{ report.id }}/createsuspect"><i class="bi bi-plus h4"></i></a>#}
+                        <form method="post" action="/reports/{{ report.id }}/createsuspect">
+                            {% csrf_token %}
+                            <button type="submit"><i class="bi bi-plus h4"></i></button>
+                        </form>
+                    </div>
+                    <div class="card-body">
+                        {% for suspect in report.suspects.all %}
+{#                            <span class="badge rounded-pill text-bg-info opacity-100">{{ suspect }}</span>#}
+                            <div class="card m-1">
+                                <div class="card-header">
+                                    {{ suspect }}
+                                </div>
+                                <div class="card-body">
+                                    {% for charge in suspect.charges.all %}
+                                        <span class="badge rounded-pill text-bg-info opacity-100">{{ charge }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
 
-                <p style="background-color:darkblue;">
-                    <b>{{ report }}</b><br>
-                </p>
+                <div class="card mt-4">
+                    <div class="card-header">
+                        Tags
+                    </div>
+                    <div class="card-body">
+                        tags here
+                    </div>
+                </div>
             </div>
         </div>
     </div>

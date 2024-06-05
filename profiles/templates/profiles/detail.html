@@ -2,86 +2,61 @@
 
 {% block content %}
     <div class="container">
-        <div class="row mt-4">
+        <div class="row">
             <div class="col-md-9">
                 <div class="row">
                     <!--Photo-->
-                    <div class="col-md-4 bg-info">
-                       <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="profile-picture" class="img-fluid">
+                    <div class="col-md-4 mt-4">
+                        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                             alt="profile-picture" class="img-fluid rounded">
                     </div>
 
                     <!--Name card-->
-                    <div class="col-md-8">
-                        <p class="bg-secondary">
-                            Name: {{ profile }}<br>
-                            Birthday: {{ profile.birthday }}<br>
-                            State ID: {{ profile.id }}<br>
-                        </p>
-                        <form method="post">
-                            {% csrf_token %}
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" name="username" class="form-control" id="username">
+                    <div class="col-md-8 mt-4">
+                        <div class="card">
+                            <div class="card-header">
+                                Details
                             </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" id="password">
+                            <div class="card-body">
+                                Name: {{ profile }}<br>
+                                Birthday: {{ profile.birthday }}<br>
+                                State ID: {{ profile.id }}<br>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                        </div>
                     </div>
 
+                    <!--Summary card-->
                     <div class="col-md-12 mt-4">
                         <div class="card">
                             <div class="card-header">
                                 Summary
                             </div>
-                          <div class="card-body">
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <div class="card-body">
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                                    qui officia deserunt mollit anim id est laborum.</p>
+                            </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 mt-4">
 
-                <div class="bg-primary p-2">
-                    <span>Tags</span>
-                </div>
-                <p class="bg-secondary">
-                    {% for tag in profile.tags.all %}
-                        <span class="badge rounded-pill text-bg-info m-2">{{ tag }}</span>
-                    {% endfor %}
-                </p>
-
-                <div class="accordion mt-4" id="accordionPanelsStayOpenExample">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                        Properties
-                      </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-                      <div class="accordion-body">
-                          {% for charge in profile.charges.all %}
-                              <span class="badge rounded-pill text-bg-info opacity-100">{{ charge }}</span>
-                          {% endfor %}
-                      </div>
+                <!--Tags card-->
+                <div class="card">
+                    <div class="card-header">
+                        Tags
                     </div>
-                  </div>
-                </div>
-
-                <div class="card mt-4">
-                  <div class="card-header">
-                    Tags
-                  </div>
-                  <div class="card-body">
-{#                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>#}
-                      {% for charge in profile.charges.all %}
-                          <span class="badge rounded-pill text-bg-info opacity-100">{{ charge }}</span>
-                      {% endfor %}
-                  </div>
+                    <div class="card-body">
+                        {#                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>#}
+                        {% for charge in profile.charges.all %}
+                            <span class="badge rounded-pill text-bg-info opacity-100">{{ charge }}</span>
+                        {% endfor %}
+                    </div>
                 </div>
 
             </div>

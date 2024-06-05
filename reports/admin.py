@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Report, Tag, Evidence, Charge
+from .models import Report, Tag, Evidence, Charge, ReportSuspect
 
 
 class ReportAdmin(admin.ModelAdmin):
@@ -8,6 +8,7 @@ class ReportAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Report, ReportAdmin)
+admin.site.register(ReportSuspect)
 admin.site.register(Tag)
 admin.site.register(Evidence)
 admin.site.register(Charge)
