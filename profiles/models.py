@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
-from reports.models import Tag, Charge
+
+from common.models import Tag
 
 
 class Profile(models.Model):
@@ -10,7 +11,6 @@ class Profile(models.Model):
     picture = models.ImageField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag)
-    charges = models.ManyToManyField(Charge)
 
     def __str__(self):
         return f"{self.name} {self.surname}"

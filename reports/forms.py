@@ -1,5 +1,5 @@
 from django import forms
-from .models import Report, ReportSuspect
+from .models import Report, Suspect
 
 
 class ReportForm(forms.ModelForm):
@@ -10,5 +10,5 @@ class ReportForm(forms.ModelForm):
 
 class ReportSuspectForm(forms.ModelForm):
     class Meta:
-        model = ReportSuspect
-        fields = ["suspect", "charges"]
+        model = Suspect
+        fields = ["profile", "charges"]

@@ -1,14 +1,19 @@
 from django.contrib import admin
 
-from .models import Report, Tag, Evidence, Charge, ReportSuspect
+from .models import Report, Tag, Evidence, Charge, Suspect
 
 
 class ReportAdmin(admin.ModelAdmin):
-    list_display = ("id", "title", "created_by", "created_at", "last_modified_at")
+    list_display = (
+        "id",
+        "title",
+        "created_by",
+        "created_at",
+        "last_modified_at",
+    )
 
 
 admin.site.register(Report, ReportAdmin)
-admin.site.register(ReportSuspect)
-admin.site.register(Tag)
+admin.site.register(Suspect)
 admin.site.register(Evidence)
 admin.site.register(Charge)

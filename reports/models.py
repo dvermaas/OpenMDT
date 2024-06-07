@@ -1,12 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-
-class Tag(models.Model):
-    title = models.CharField(max_length=256)
-
-    def __str__(self):
-        return self.title
+from common.models import Tag
+from profiles.models import Profile
 
 
 class Evidence(models.Model):
@@ -25,21 +21,9 @@ class Charge(models.Model):
         return self.title
 
 
-class ReportSuspect(models.Model):
-    suspect = models.CharField(max_length=256)
-    charges = models.ManyToManyField(Charge)
-
-    def __str__(self):
-        return self.suspect
-
-
 class Report(models.Model):
     title = models.CharField(max_length=256)
-    # suspect = models.OneToOneField(
-    #     "profiles.Profile", on_delete=models.CASCADE, blank=False, null=False
-    # )
     tags = models.ManyToManyField(Tag)
-    suspects = models.ManyToManyField(ReportSuspect)
 
     is_warrant = models.BooleanField(default=False)
     is_processed = models.BooleanField(default=False)
@@ -51,3 +35,14 @@ class Report(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Suspect(models.Model):
+    charges = models.ManyToManyField(Charge, blank=True)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    report = models.ForeignKey(
+        Report, on_delete=models.CASCADE, related_name="suspects"
+    )
+
+    def __str__(self):
+        return str(self.profile)

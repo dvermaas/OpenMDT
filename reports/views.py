@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.views.generic import CreateView
 
-from .models import Report, ReportSuspect
+from .models import Report, Suspect
 from .forms import ReportForm, ReportSuspectForm
 
 
@@ -22,7 +22,7 @@ class ReportCreateView(LoginRequiredMixin, CreateView):
 def add_suspect_to_report(request, report_id):
     report = get_object_or_404(Report, pk=report_id)
     if request.method == "POST":
-        suspect = ReportSuspect.objects.create(suspect="jeff")
+        suspect = Suspect.objects.create(suspect="jeff")
         report.suspects.add(suspect)
         return redirect("detail", report_id=report.id)
     context = {"report": report}
