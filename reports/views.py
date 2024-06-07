@@ -19,22 +19,12 @@ class ReportCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class ReportSuspectCreateView(LoginRequiredMixin, CreateView):
-    model = ReportSuspect
-    form_class = ReportSuspectForm
-    template_name = "reports/create.html"
-    success_url = "/reports"
-
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
-
-
 def add_suspect_to_report(request, report_id):
     report = get_object_or_404(Report, pk=report_id)
     if request.method == "POST":
         suspect = ReportSuspect.objects.create(suspect="jeff")
         report.suspects.add(suspect)
+        return redirect("detail", report_id=report.id)
     context = {"report": report}
     return render(request, "reports/detail.html", context)
 
