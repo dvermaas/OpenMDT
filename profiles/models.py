@@ -10,7 +10,7 @@ class Profile(models.Model):
     birthday = models.DateField()
     picture = models.ImageField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
         return f"{self.name} {self.surname}"
