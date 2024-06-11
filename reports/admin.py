@@ -13,7 +13,16 @@ class ReportAdmin(admin.ModelAdmin):
     )
 
 
+class SuspectAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "report",
+        "profile",
+        "created_at",
+    )
+
+
 admin.site.register(Report, ReportAdmin)
-admin.site.register(Suspect)
+admin.site.register(Suspect, SuspectAdmin)
 admin.site.register(Evidence)
 admin.site.register(Charge)

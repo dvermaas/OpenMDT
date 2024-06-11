@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.11
+FROM python:3.12
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -14,3 +14,7 @@ RUN pip install -r requirements.txt
 
 # Copy the project code into the container
 COPY . /app/
+
+RUN python manage.py collectstatic --noinput
+
+ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8994", "--workers", "4", "DjangoPolls.wsgi"]

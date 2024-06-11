@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.views.generic import CreateView
 
 from .models import Report, Suspect
+from profiles.models import Profile
 from .forms import ReportForm, ReportSuspectForm
 
 
@@ -22,8 +23,7 @@ class ReportCreateView(LoginRequiredMixin, CreateView):
 def add_suspect_to_report(request, report_id):
     report = get_object_or_404(Report, pk=report_id)
     if request.method == "POST":
-        suspect = Suspect.objects.create(suspect="jeff")
-        report.suspects.add(suspect)
+        Suspect.objects.create(profile=Profile.objects.last(), report=report)
         return redirect("detail", report_id=report.id)
     context = {"report": report}
     return render(request, "reports/detail.html", context)
