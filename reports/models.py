@@ -25,7 +25,8 @@ class Charge(models.Model):
 
 class Report(models.Model):
     title = models.CharField(max_length=256)
-    tags = models.ManyToManyField(Tag)
+    body = models.TextField(max_length=2048)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     is_warrant = models.BooleanField(default=False)
     is_processed = models.BooleanField(default=False)

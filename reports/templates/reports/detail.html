@@ -9,57 +9,37 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-md-6">
-                                <b>Viewing Report #{{ report.id }}</b><br>
-                                Created by {{ report.created_by }} at {{ report.created_at }}
+                            <div class="col-md-10">
+                                <b>Viewing Report #{{ report.id }}</b> | Created by {{ report.created_by }} at {{ report.created_at }}
                             </div>
-                            <div class="col-md-6">
-                                <a class="btn btn-info" href="/reports/edit/{{ report.id }}"><i
-                                        class="bi bi-pencil-square h5"></i>Edit</a>
-                                <a class="btn btn-danger" href="/reports/delete/{{ report.id }}">
-                                    <iclass
-                                    ="bi bi-trash h5"></i>Delete</a>
+                            <div class="col-md-2 text-end">
+                                <a class="btn p-0" href="/reports/edit/{{ report.id }}"><i
+                                        class="bi bi-pencil-square"></i></a>
+                                <a class="btn p-0" href="/reports/delete/{{ report.id }}"><i
+                                        class="bi bi-trash text-danger"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        my name is slims shady<br>
-                        report
+                        {{ report.body }}
                     </div>
                 </div>
             </div>
+
             <div class="col-md-3">
 
                 <!-- Suspects Card -->
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        Suspects
-                        <form method="post" action="/reports/{{ report.id }}/createsuspect" class="mb-0">
-                            {% csrf_token %}
-                            <button type="submit" class="btn p-0">
-                                <i class="bi bi-plus"></i>
-                            </button>
-                        </form>
-                    </div>
-                    {% for suspect in report.suspects.all %}
-                        <div class="card-body pt-1 pb-1">
-                            <b>{{ suspect }}</b><br>
-                            {% for charge in suspect.charges.all %}
-                                <span class="badge rounded-pill text-bg-info opacity-100">{{ charge }}</span>
-                            {% endfor %}
-                        </div>
-                        {% if not forloop.last %}
-                            <hr class="mt-0 mb-0">
-                        {% endif %}
-                    {% endfor %}
-                </div>
+                {% include "reports/partials/suspects.html" %}
 
+                <!-- Tags Card -->
                 <div class="card mt-4">
                     <div class="card-header">
                         Tags
                     </div>
                     <div class="card-body">
-                        tags here
+                        {% for tag in report.tags.all %}
+                            <span class="badge rounded-pill text-bg-info opacity-100">{{ tag }}</span>
+                        {% endfor %}
                     </div>
                 </div>
 

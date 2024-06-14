@@ -1,33 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container  mt-4">
+    <div class="container  mt-4 bg-warning rounded">
         <a class="btn btn-info" href="/reports/create"><i class="bi bi-plus h5"></i>Add Report</a>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Tags</th>
-                    <th>Created By</th>
-                    <th>Created At</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for report in latest_report_list %}
-                    <tr>
-                        <td><a href="/reports/detail/{{ report.id }}/">{{ report.id }}</a></td>
-                        <td>{{ report }}</td>
-                        <td>
-                            {% for tag in report.tags.all %}
-                                <span class="badge rounded-pill text-bg-info">{{ tag }}</span>
-                            {% endfor %}
-                        </td>
-                        <td>{{ report.created_by }}</td>
-                        <td>{{ report.created_at }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        {% include "reports/partials/table.html" %}
     </div>
 {% endblock content %}

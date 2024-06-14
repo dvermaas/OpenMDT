@@ -1,6 +1,14 @@
 from django.contrib import admin
 
-from .models import Report, Tag, Evidence, Charge, Suspect
+from .models import Report, Evidence, Charge, Suspect
+
+
+class SuspectInline(admin.TabularInline):
+    model = Suspect
+    extra = 1
+    # fields = ["profile"]
+    readonly_fields = ["created_at"]
+    classes = ["collapse"]
 
 
 class ReportAdmin(admin.ModelAdmin):
@@ -11,18 +19,9 @@ class ReportAdmin(admin.ModelAdmin):
         "created_at",
         "last_modified_at",
     )
-
-
-class SuspectAdmin(admin.ModelAdmin):
-    list_display = (
-        "id",
-        "report",
-        "profile",
-        "created_at",
-    )
+    inlines = [SuspectInline]
 
 
 admin.site.register(Report, ReportAdmin)
-admin.site.register(Suspect, SuspectAdmin)
 admin.site.register(Evidence)
 admin.site.register(Charge)
