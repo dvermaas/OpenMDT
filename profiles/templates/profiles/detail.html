@@ -16,11 +16,13 @@
                         <div class="card w-100">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <span>Details</span>
+                                {% if user.is_authenticated %}
                                 <button class="btn p-0"
                                         hx-get="/profiles/edit/{{ profile.id }}"
                                         hx-target="#info">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
+                                {% endif %}
                             </div>
                             <div class="card-body" id="info">
                                 {% include "profiles/partials/info.html" %}
@@ -33,11 +35,13 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <span>Summary</span>
+                                {% if user.is_authenticated %}
                                 <button class="btn p-0"
                                         hx-get="/profiles/edit-summary/{{ profile.id }}"
                                         hx-target="#summary">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
+                                {% endif %}
                             </div>
                             <div class="card-body" id="summary">
                                 <p class="card-text">
