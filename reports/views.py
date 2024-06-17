@@ -1,6 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
 from django.views.generic import CreateView
 
 from .models import Report, Suspect
@@ -35,19 +34,19 @@ def index(request):
     return render(request, "reports/index.html", context)
 
 
-def detail(request, report_id):
-    report = Report.objects.get(id=report_id)
+def detail(request, pk):
+    report = get_object_or_404(Report, pk=pk)
     context = {"report": report}
     return render(request, "reports/detail.html", context)
 
 
-def edit(request, report_id):
-    report = Report.objects.get(id=report_id)
+def edit(request, pk):
+    report = get_object_or_404(Report, pk=pk)
     context = {"report": report}
     return render(request, "reports/index.html", context)
 
 
-def delete(request, report_id):
-    report = Report.objects.get(id=report_id)
+def delete(request, pk):
+    report = get_object_or_404(Report, pk=pk)
     report.delete()
     return index(request)

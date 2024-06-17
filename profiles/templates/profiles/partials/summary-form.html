@@ -1,0 +1,7 @@
+<form hx-put="{% url 'editsummary' profile.id %}" hx-target="#summary">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <input class="btn btn-primary" type="submit">
+</form>

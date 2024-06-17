@@ -7,6 +7,7 @@ from common.models import Tag
 class Profile(models.Model):
     name = models.CharField(max_length=256)
     surname = models.CharField(max_length=256)
+    body = models.TextField(max_length=2048, blank=True)
     birthday = models.DateField()
     picture = models.ImageField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

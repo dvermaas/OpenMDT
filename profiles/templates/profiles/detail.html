@@ -12,15 +12,18 @@
                     </div>
 
                     <!--Name card-->
-                    <div class="col-md-8 mt-4">
-                        <div class="card">
-                            <div class="card-header">
-                                Details
+                    <div class="col-md-8 mt-4 d-flex align-items-stretch">
+                        <div class="card w-100">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span>Details</span>
+                                <button class="btn p-0"
+                                        hx-get="/profiles/edit/{{ profile.id }}"
+                                        hx-target="#info">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
                             </div>
-                            <div class="card-body">
-                                Name: {{ profile }}<br>
-                                Birthday: {{ profile.birthday }}<br>
-                                State ID: {{ profile.id }}<br>
+                            <div class="card-body" id="info">
+                                {% include "profiles/partials/info.html" %}
                             </div>
                         </div>
                     </div>
@@ -28,34 +31,49 @@
                     <!--Summary card-->
                     <div class="col-md-12 mt-4">
                         <div class="card">
-                            <div class="card-header">
-                                Summary
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span>Summary</span>
+                                <button class="btn p-0"
+                                        hx-get="/profiles/edit-summary/{{ profile.id }}"
+                                        hx-target="#summary">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
                             </div>
-                            <div class="card-body">
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                    qui officia deserunt mollit anim id est laborum.</p>
+                            <div class="card-body" id="summary">
+                                <p class="card-text">
+                                    {% include "profiles/partials/summary.html" %}
+                                </p>
                             </div>
                         </div>
 
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 mt-4">
+            <div class="col-md-3">
 
                 <!--Tags card-->
-                <div class="card">
-                    <div class="card-header">
-                        Tags
+                <div class="card mt-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Tags</span>
+                        <a class="btn p-0" href="/reports/edit/{{ profile.id }}">
+                            <i class="bi bi-plus"></i>
+                        </a>
                     </div>
                     <div class="card-body">
-                        {#                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>#}
+                        <span class="badge text-bg-info opacity-100">Gang</span>
                         {% for charge in profile.charges.all %}
-                            <span class="badge rounded-pill text-bg-info opacity-100">{{ charge }}</span>
+                            <span class="badge text-bg-info opacity-100">{{ charge }}</span>
                         {% endfor %}
+                    </div>
+                </div>
+
+                <!--Properties card-->
+                <div class="card mt-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Properties</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="badge text-bg-info opacity-100">Electric Avenue</span>
                     </div>
                 </div>
 
