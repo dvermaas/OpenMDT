@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.contrib.auth.models import User
 from django.db import models
+from simple_history.models import HistoricalRecords
 
 from common.models import Tag
 from profiles.models import Profile
@@ -35,6 +36,8 @@ class Report(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     last_modified_at = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    history = HistoricalRecords()
 
     def __str__(self):
         return self.title

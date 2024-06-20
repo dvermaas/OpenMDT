@@ -1,5 +1,5 @@
-from django.contrib.auth.models import User
 from django.db import models
+from simple_history.models import HistoricalRecords
 
 from common.models import Tag
 
@@ -12,6 +12,8 @@ class Profile(models.Model):
     picture = models.ImageField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag, blank=True)
+
+    history = HistoricalRecords()
 
     def __str__(self):
         return f"{self.name} {self.surname}"
