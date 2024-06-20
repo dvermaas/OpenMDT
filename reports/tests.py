@@ -10,7 +10,7 @@ class ReportTestCase(TestCase):
         user = User.objects.create_user("testuser", "<EMAIL>", "<PASSWORD>")
         Report.objects.create(title="Test Report", created_by=user)
 
-    def TestIfReportExists(self):
+    def test_created_report_exists(self):
         """Animals that can speak are correctly identified"""
         report = Report.objects.first()
         self.assertEqual(report.title, "Test Report")
