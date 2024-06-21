@@ -1,3 +1,17 @@
-Name: {{ profile }}<br>
-Birthday: {{ profile.birthday }}<br>
-State ID: {{ profile.id }}<br>
+<div class="card w-100">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Details</span>
+        {% if user.is_authenticated %}
+            <button class="btn p-0"
+                    hx-get="/profiles/edit/{{ profile.id }}"
+                    hx-target="#info">
+                <i class="bi bi-pencil-square"></i>
+            </button>
+        {% endif %}
+    </div>
+    <div class="card-body" id="info">
+        Name: {{ profile }}<br>
+        Birthday: {{ profile.birthday }}<br>
+        State ID: {{ profile.id }}<br>
+    </div>
+</div>
