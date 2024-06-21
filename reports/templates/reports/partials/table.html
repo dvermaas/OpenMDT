@@ -16,7 +16,7 @@
                 <td>{{ report }}</td>
                 <td>
                     {% for tag in report.tags.all %}
-                        <span class="badge rounded-pill text-bg-info">{{ tag }}</span>
+                        {% include "common/partials/tag.html"%}
                     {% endfor %}
                 </td>
                 <td>{{ report.created_by }}</td>

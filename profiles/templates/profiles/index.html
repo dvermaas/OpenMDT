@@ -18,7 +18,7 @@
                         <td>{{ profile }}</td>
                         <td>
                             {% for tag in profile.tags.all %}
-                                <span class="badge rounded-pill text-bg-info">{{ tag }}</span>
+                                {% include "common/partials/tag.html"%}
                             {% endfor %}
                         </td>
                     </tr>

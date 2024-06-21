@@ -5,7 +5,7 @@ from .models import Report, Suspect
 class ReportForm(forms.ModelForm):
     class Meta:
         model = Report
-        fields = ["title"]
+        fields = ["title", "body"]
 
 
 class ReportSuspectForm(forms.ModelForm):

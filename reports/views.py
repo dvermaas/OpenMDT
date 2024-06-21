@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import QueryDict
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView
 
@@ -44,6 +45,19 @@ def edit(request, pk):
     report = get_object_or_404(Report, pk=pk)
     context = {"report": report}
     return render(request, "reports/index.html", context)
+
+
+def detail_info_form(request, pk):
+    report = get_object_or_404(Report, pk=pk)
+    context = {"report": report}
+    if request.method == "PUT":
+        data = QueryDict(request.body)
+        form = ReportForm(data, instance=report)
+        if form.is_valid():
+            form.save()
+            return render(request, "reports/partials/info.html", context)
+    context["form"] = ReportForm(instance=report)
+    return render(request, "reports/partials/info-form.html", context)
 
 
 def delete(request, pk):

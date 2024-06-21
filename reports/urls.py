@@ -12,6 +12,7 @@ urlpatterns = [
     #     name="create",
     # ),
     path("<int:pk>/createsuspect", views.add_suspect_to_report, name="addsuspect"),
-    path("edit/<int:pk>/", views.edit, name="edit"),
+    # path("edit/<int:pk>/", views.edit, name="edit"),
+    path("edit/<int:pk>/", views.detail_info_form, name="edit"),
     path("delete/<int:pk>/", views.delete, name="delete"),
 ]

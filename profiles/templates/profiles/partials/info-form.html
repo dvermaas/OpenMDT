@@ -4,13 +4,13 @@
         {% if user.is_authenticated %}
             <button class="btn p-0"
                     hx-include="#form"
-                    hx-put="{% url 'edit' profile.id %}"
+                    hx-put="{% url 'profiles:edit' profile.id %}"
                     hx-target="#info">
-                <i class="bi bi-floppy"></i>
+                <i class="bi bi-floppy text-info"></i>
             </button>
         {% endif %}
     </div>
-    <div class="card-body" id="info">
+    <div class="card-body">
         <form id="form">
             {% csrf_token %}
             {{ form.as_p }}

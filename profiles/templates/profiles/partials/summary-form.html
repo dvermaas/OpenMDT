@@ -4,9 +4,9 @@
         {% if user.is_authenticated %}
             <button class="btn p-0"
                     hx-include="#form"
-                    hx-put="{% url 'editsummary' profile.id %}"
+                    hx-put="{% url 'profiles:editsummary' profile.id %}"
                     hx-target="#summary">
-                <i class="bi bi-floppy"></i>
+                <i class="bi bi-floppy text-info"></i>
             </button>
         {% endif %}
     </div>

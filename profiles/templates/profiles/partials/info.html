@@ -3,7 +3,7 @@
         <span>Details</span>
         {% if user.is_authenticated %}
             <button class="btn p-0"
-                    hx-get="/profiles/edit/{{ profile.id }}"
+                    hx-get="{% url 'profiles:edit' profile.id %}"
                     hx-target="#info">
                 <i class="bi bi-pencil-square"></i>
             </button>
