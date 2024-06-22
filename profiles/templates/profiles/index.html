@@ -2,28 +2,40 @@
 
 {% block content %}
     <div class="container  mt-4">
-        <a class="btn btn-info" href="/profiles/create"><i class="bi bi-plus h5"></i>Add Profile</a>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Tags</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for profile in latest_profile_list %}
-                    <tr>
-                        <td><a href="/profiles/detail/{{ profile.id }}/">{{ profile.id }}</a></td>
-                        <td>{{ profile }}</td>
-                        <td>
-                            {% for tag in profile.tags.all %}
-                                {% include "common/partials/tag.html"%}
-                            {% endfor %}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="col-md-12 mt-4">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Profiles</span>
+                        <a class="btn p-0" href="/profiles/create/{{ profile.id }}">
+                            <i class="bi bi-plus"></i>
+                        </a>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Tags</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for profile in latest_profile_list %}
+                            <tr>
+                                <td><a href="/profiles/detail/{{ profile.id }}/">{{ profile.id }}</a></td>
+                                <td>{{ profile }}</td>
+                                <td>
+                                    {% for tag in profile.tags.all %}
+                                        {% include "common/partials/tag.html" %}
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
     </div>
 {% endblock content %}

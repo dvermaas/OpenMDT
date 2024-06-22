@@ -12,7 +12,6 @@
         {% for report in latest_report_list %}
             <tr>
                 <td><a href="/reports/detail/{{ report.id }}/">{{ report.id }}</a></td>
-{#                <td><a href="{% url 'detail' report.id %}">{{ report.id }}</a></td>#}
                 <td>{{ report }}</td>
                 <td>
                     {% for tag in report.tags.all %}

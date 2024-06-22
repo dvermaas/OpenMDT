@@ -1,8 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container  mt-4">
-        <a class="btn btn-info" href="/reports/create"><i class="bi bi-plus h5"></i>Add Report</a>
-        {% include "reports/partials/table.html" %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-4">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Filters</span>
+                    </div>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 mt-4">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Reports</span>
+                        <a class="btn p-0" href="/reports/create/{{ report.id }}">
+                            <i class="bi bi-plus"></i>
+                        </a>
+                    </div>
+                    {% include "reports/partials/table.html" %}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock content %}

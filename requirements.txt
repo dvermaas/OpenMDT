@@ -8,3 +8,5 @@ djlint==1.34.1
 gunicorn==22.0.0
 pillow==10.2.0
 psycopg2==2.9.9
+django-crispy-forms==2.2
+crispy-bootstrap5==2024.2
