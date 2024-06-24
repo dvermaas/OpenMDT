@@ -23,6 +23,7 @@ class Charge(models.Model):
 
 
 class Report(models.Model):
+    is_active = models.BooleanField(default=True)
     title = models.CharField(max_length=256)
     body = models.TextField(max_length=2048)
     tags = models.ManyToManyField(Tag, blank=True)

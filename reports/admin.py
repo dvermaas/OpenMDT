@@ -12,9 +12,10 @@ class SuspectInline(admin.TabularInline):
     classes = ["collapse"]
 
 
-class ReportAdmin(admin.ModelAdmin):
+class ReportAdmin(SimpleHistoryAdmin):
     list_display = (
         "id",
+        "is_active",
         "title",
         "created_by",
         "created_at",
@@ -23,7 +24,6 @@ class ReportAdmin(admin.ModelAdmin):
     inlines = [SuspectInline]
 
 
-# admin.site.register(Report, ReportAdmin)
-admin.site.register(Report, SimpleHistoryAdmin)
+admin.site.register(Report, ReportAdmin)
 admin.site.register(Evidence)
 admin.site.register(Charge)

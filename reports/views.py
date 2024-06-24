@@ -5,12 +5,11 @@ from django.views.generic import CreateView
 
 from .models import Report, Suspect
 from profiles.models import Profile
-from .forms import ReportForm, ReportSuspectForm
+from .forms import ReportForm, ReportCrispyForm
 
 
 class ReportCreateView(LoginRequiredMixin, CreateView):
     model = Report
-    # fields = ["title", "is_warrant", "is_processed", "is_plead_guilty"]
     form_class = ReportForm
     template_name = "reports/create.html"
     success_url = "/reports"
@@ -30,7 +29,7 @@ def add_suspect_to_report(request, report_id):
 
 
 def index(request):
-    latest_report_list = Report.objects.order_by("-created_at")[:]
+    latest_report_list = Report.objects.filter(is_active=True).order_by("-created_at")
     context = {"latest_report_list": latest_report_list}
     return render(request, "reports/index.html", context)
 
@@ -39,12 +38,6 @@ def detail(request, pk):
     report = get_object_or_404(Report, pk=pk)
     context = {"report": report}
     return render(request, "reports/detail.html", context)
-
-
-def edit(request, pk):
-    report = get_object_or_404(Report, pk=pk)
-    context = {"report": report}
-    return render(request, "reports/index.html", context)
 
 
 def detail_info_form(request, pk):
@@ -62,5 +55,17 @@ def detail_info_form(request, pk):
 
 def delete(request, pk):
     report = get_object_or_404(Report, pk=pk)
-    report.delete()
+    report.is_active = False
+    report.save()
     return index(request)
+
+
+def form(request):
+    context = {"form": ReportCrispyForm()}
+    if request.method == "POST":
+        print("posting")
+        form = ReportCrispyForm(request.POST)
+        if form.is_valid():
+            # form.save()
+            return redirect("reports:index")
+    return render(request, "reports/create.html", context)
