@@ -31,3 +31,5 @@ urlpatterns = [
     path("profiles/", include(("profiles.urls", "profiles"), "profiles")),
     path("api/", api.urls),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

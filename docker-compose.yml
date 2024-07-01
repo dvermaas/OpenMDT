@@ -1,25 +1,24 @@
-version: '3'
-
 services:
-  web:
-    restart: always
-    build: ./web
-    expose:
-      - "8000"
-    links:
-      - postgres:postgres
+  db:
+    image: postgres
+    container_name: postgres
     volumes:
-      - web-django:/usr/src/app
-      - web-static:/usr/src/app/static
-    env_file: .env
+      - ./data/db:/var/lib/postgresql/data
     environment:
-      DEBUG: 'true'
-    command: /usr/local/bin/gunicorn docker_django.wsgi:application -w 2 -b :8000
-
-  postgres:
-    restart: always
-    image: postgres:latest
-    ports:
-      - "5432:5432"
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=testme123
+  web:
+    build: .
+    container_name: django
     volumes:
-      - pgdata:/var/lib/postgresql/data/
+      - ./app:/code
+    env_file: ".env"
+    environment:
+      - DATABASE_URL=postgres://postgres:testme123@db:5432/postgres
+      - DJANGO_SUPERUSER_PASSWORD=testme123
+    ports:
+      - "8994:8994"
+    command: ["python", "manage.py", "migrate"]
+    depends_on:
+      - db
