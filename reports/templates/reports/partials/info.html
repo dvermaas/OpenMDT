@@ -5,7 +5,8 @@
     <div>
         <button class="btn p-0"
                 hx-get="{% url 'reports:edit' report.id %}"
-                hx-target="#info">
+                hx-target="#info"
+                hx-indicator="#spinner">
             <i class="bi bi-pencil-square"></i>
         </button>
         <a class="btn p-0" href="/reports/delete/{{ report.id }}"><i

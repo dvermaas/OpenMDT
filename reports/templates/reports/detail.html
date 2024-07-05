@@ -7,7 +7,11 @@
 
                 <!-- Report Details Card -->
                 <div class="card mt-4" id="info">
-                    {% include "reports/partials/info.html"%}
+                    {% include "reports/partials/info.html" %}
+                    <div class="spinner-border text-primary htmx-indicator" role="status" id="spinner">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+
                 </div>
             </div>
 
@@ -23,7 +27,7 @@
                     </div>
                     <div class="card-body">
                         {% for tag in report.tags.all %}
-                            {% include "common/partials/tag.html"%}
+                            {% include "common/partials/tag.html" %}
                         {% endfor %}
                     </div>
                 </div>

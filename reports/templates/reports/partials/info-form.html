@@ -8,7 +8,8 @@
         <button class="btn p-0"
                 hx-include="#form"
                 hx-put="{% url 'reports:edit' report.id %}"
-                hx-target="#info">
+                hx-target="#info"
+                hx-indicator="#spinner">
             <i class="bi bi-floppy text-info"></i>
         </button>
     </div>

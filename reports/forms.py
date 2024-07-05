@@ -1,8 +1,7 @@
 from django import forms
 from .models import Report, Suspect
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout
-from crispy_bootstrap5.bootstrap5 import Switch
+from crispy_forms.layout import Submit
 
 
 class ReportForm(forms.ModelForm):

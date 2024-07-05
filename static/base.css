@@ -13,3 +13,15 @@
     margin: 0;
     padding: 0;
 }
+
+.htmx-indicator {
+    display: none
+}
+
+.htmx-indicator.htmx-request {
+    display: inline;
+}
+
+.htmx-indicator.htmx-request ~ span {
+    display: none;
+}
