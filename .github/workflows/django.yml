@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SECRET_KEY: testme123
-      DATABASE_URL: postgres://runner:root@localhost:5432/postgres
+      DATABASE_URL: sqlite:///db.sqlite3
     strategy:
       max-parallel: 4
       matrix:

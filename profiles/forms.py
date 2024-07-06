@@ -8,6 +8,12 @@ class ProfileInfoForm(forms.ModelForm):
         fields = ["name", "surname"]
 
 
+class ProfilePictureForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ["picture"]
+
+
 class ProfileSummaryForm(forms.ModelForm):
     class Meta:
         model = Profile
