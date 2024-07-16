@@ -2,7 +2,11 @@ services:
   cloudflared:
     image: cloudflare/cloudflared
     container_name: cloudflared
-
+    command: tunnel --no-autoupdate run
+    env_file: "cloudflared.env"
+    restart: unless-stopped
+    depends_on:
+      - webapp
   db:
     image: postgres
     container_name: postgres
@@ -12,24 +16,18 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=testme123
-  web:
+  webapp:
     build: .
     container_name: django
-    environment:
-      - DEBUG=on
-      - SECRET_KEY="wb1j9+vxe2b#1dfu+2zgiaoa1v@q@wub15i75r=!*mol39k-qo"
-      - DATABASE_URL=postgres://postgres:testme123@db:5432/postgres
-      - AWS_S3_ACCESS_KEY_ID=your_minio_access_key
-      - AWS_S3_SECRET_ACCESS_KEY=your_minio_secret_key
-      - AWS_S3_BUCKET_NAME=main
-      - AWS_S3_ENDPOINT_URL=http://s3:9000
+    volumes:
+      - ./data/app:/app
+    env_file: "webapp.env"
+    ports:
+      - "8000:8994"
     develop:
       watch:
         - action: sync
           path: .
           target: /app
-    ports:
-      - "8000:8994"
     depends_on:
       - db
-#      - createbucket

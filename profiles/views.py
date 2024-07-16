@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import QueryDict
 from django.shortcuts import render, get_object_or_404
 
-from profiles.forms import ProfileInfoForm, ProfileSummaryForm
+from profiles.forms import ProfileInfoForm, ProfileSummaryForm, ProfilePictureForm
 from profiles.models import Profile
 
 
@@ -16,6 +16,20 @@ def detail(request, pk):
     profile = get_object_or_404(Profile, pk=pk)
     context = {"profile": profile}
     return render(request, "profiles/detail.html", context)
+
+
+@login_required
+def detail_picture_form(request, pk):
+    profile = get_object_or_404(Profile, pk=pk)
+    context = {"profile": profile}
+    if request.method == "PUT":
+        data = QueryDict(request.body)
+        form = ProfilePictureForm(data, instance=profile)
+        if form.is_valid():
+            form.save()
+            return render(request, "profiles/partials/picture.html", context)
+    context["form"] = ProfilePictureForm(instance=profile)
+    return render(request, "profiles/partials/picture-form.html", context)
 
 
 @login_required
@@ -50,3 +64,7 @@ def delete(request, pk):
     report = Profile.objects.get(id=pk)
     report.delete()
     return index(request)
+
+
+def test(request):
+    return render(request, "profiles/test.html")

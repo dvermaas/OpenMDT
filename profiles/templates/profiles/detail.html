@@ -6,12 +6,11 @@
             <div class="col-md-9">
                 <div class="row">
                     <!--Photo-->
-                    <div class="col-md-4 mt-4">
-                        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                             alt="profile-picture" class="img-fluid rounded">
+                    <div class="col-md-4 mt-4" id="picture">
+                        {% include "profiles/partials/picture.html" %}
                     </div>
 
-                    <!--Name card-->
+                    <!--Details card-->
                     <div class="col-md-8 mt-4 d-flex align-items-stretch" id="info">
                         {% include "profiles/partials/info.html" %}
                     </div>
@@ -22,8 +21,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
 
+            <div class="col-md-3">
                 <!--Tags card-->
                 <div class="card mt-4">
                     <div class="card-header d-flex justify-content-between align-items-center">

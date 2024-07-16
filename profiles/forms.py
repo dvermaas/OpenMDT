@@ -13,6 +13,10 @@ class ProfilePictureForm(forms.ModelForm):
         model = Profile
         fields = ["picture"]
 
+    def __init__(self, *args, **kwargs):
+        super(ProfilePictureForm, self).__init__(*args, **kwargs)
+        self.fields["picture"].label = ""
+
 
 class ProfileSummaryForm(forms.ModelForm):
     class Meta:
