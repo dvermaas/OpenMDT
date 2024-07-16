@@ -33,4 +33,14 @@ jobs:
           python manage.py test
       - name: Dependency Scanner
         run: |
-          pip-audit -r requirements.txt
+          pip-audit
+      - name: Docker Login
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and Push
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/django:latest
