@@ -1,0 +1,26 @@
+services:
+  cloudflared:
+    image: cloudflare/cloudflared
+    container_name: cloudflared
+    env_file: "prod.env"
+    command: tunnel --no-autoupdate run
+    restart: unless-stopped
+    depends_on:
+      - webapp
+  db:
+    image: postgres
+    container_name: postgres
+    env_file: "prod.env"
+    volumes:
+      - ./data/prd/db:/var/lib/postgresql/data
+  webapp:
+    build: .
+    container_name: django
+    env_file: "prod.env"
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+    depends_on:
+      - db

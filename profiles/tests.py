@@ -1,5 +1,3 @@
-import profile
-
 from django.test import TestCase
 from django.utils import timezone
 from profiles.models import Profile

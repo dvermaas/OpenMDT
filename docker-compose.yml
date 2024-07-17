@@ -1,12 +1,4 @@
 services:
-  cloudflared:
-    image: cloudflare/cloudflared
-    container_name: cloudflared
-    command: tunnel --no-autoupdate run
-    env_file: "cloudflared.env"
-    restart: unless-stopped
-    depends_on:
-      - webapp
   db:
     image: postgres
     container_name: postgres
@@ -19,9 +11,11 @@ services:
   webapp:
     build: .
     container_name: django
-    volumes:
-      - ./data/app:/app
-    env_file: "webapp.env"
+    environment:
+      - DEBUG=on
+      - SECRET_KEY="wb1j9+vxe2b#1dfu+2zgiaoa1v@q@wub15i75r=!*mol39k-qo"
+      - DATABASE_URL=postgres://postgres:testme123@db:5432/postgres
+      - ALLOWED_HOSTS=localhost
     ports:
       - "8000:8994"
     develop:

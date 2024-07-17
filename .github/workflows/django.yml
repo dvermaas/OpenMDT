@@ -28,12 +28,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install uv
           uv pip install --system -r requirements.txt
-      - name: Run Tests
-        run: |
-          python manage.py test
       - name: Dependency Scanner
         run: |
           pip-audit
+      - name: Linter
+        run: |
+          ruff check --extend-select=E501 --exclude=migrations,settings.py,env,venv,.venv
+      - name: Unittests
+        run: |
+          python manage.py test
+  docker:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Docker Login
         uses: docker/login-action@v3
         with:
@@ -42,5 +49,6 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v6
         with:
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/django:latest
