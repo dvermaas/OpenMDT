@@ -48,6 +48,19 @@
                     </div>
                 </div>
 
+                <!--Charges card-->
+                <div class="card mt-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Charges</span>
+                    </div>
+                    <div class="card-body">
+                        {%  for suspect in profile.report_appearances %}
+                            <span class="badge text-bg-info opacity-100">{{ suspect.report.title }}</span>
+                        {% endfor %}
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

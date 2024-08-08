@@ -1,5 +1,6 @@
 from django.contrib import admin
 
-from common.models import Tag
+from .models import Tag, Notification
 
 admin.site.register(Tag)
+admin.site.register(Notification)

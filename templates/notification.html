@@ -2,8 +2,9 @@
 
 {% if notifications %}
     {% for notification in notifications %}
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>{{ notification }}</strong> {{ notification.body }}
+        <div class="alert alert-{{ notification.type }} alert-dismissible fade show mb-0" role="alert" id="notification-{{ notification.pk }}">
+            <strong>{{ notification }}</strong> | {{ notification.created_at }}<br>
+            <span>{{ notification.body }}</span>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endfor %}

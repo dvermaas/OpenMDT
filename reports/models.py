@@ -14,9 +14,11 @@ class Evidence(models.Model):
         return self.title
 
 
-class Charge(models.Model):
+class Legislation(models.Model):
     title = models.CharField(max_length=256)
     description = models.TextField(max_length=1024)
+    time = models.IntegerField()
+    fine = models.IntegerField()
 
     def __str__(self):
         return self.title
@@ -43,8 +45,9 @@ class Report(models.Model):
 
 
 class Suspect(models.Model):
-    charges = models.ManyToManyField(Charge, blank=True)
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(
+        Profile, on_delete=models.CASCADE, related_name="report_appearances"
+    )
     report = models.ForeignKey(
         Report, on_delete=models.CASCADE, related_name="suspects"
     )
@@ -52,3 +55,15 @@ class Suspect(models.Model):
 
     def __str__(self):
         return str(self.profile)
+
+
+class Charge(models.Model):
+    legislation = models.ForeignKey(Legislation, on_delete=models.CASCADE)
+    suspect = models.ForeignKey(
+        Suspect,
+        on_delete=models.CASCADE,
+        related_name="charges",
+    )
+
+    def __str__(self):
+        return str(self.legislation)

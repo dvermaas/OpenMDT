@@ -10,10 +10,12 @@ ENV DATABASE_URL=$DATABASE_URL
 
 WORKDIR /app
 
-COPY . .
+COPY requirements.txt requirements.txt
 
 RUN pip install uv && \
     uv pip install --system -r requirements.txt
+
+COPY . .
 
 RUN python manage.py collectstatic --noinput
 

@@ -41,4 +41,4 @@ class ReportCrispyForm(forms.Form):
 class ReportSuspectForm(forms.ModelForm):
     class Meta:
         model = Suspect
-        fields = ["profile", "charges"]
+        fields = ["profile"]

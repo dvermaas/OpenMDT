@@ -1,7 +1,7 @@
 from django.contrib import admin
 from simple_history.admin import SimpleHistoryAdmin
 
-from .models import Report, Evidence, Charge, Suspect
+from .models import Report, Evidence, Suspect, Charge, Legislation
 
 
 class SuspectInline(admin.TabularInline):
@@ -26,4 +26,5 @@ class ReportAdmin(SimpleHistoryAdmin):
 
 admin.site.register(Report, ReportAdmin)
 admin.site.register(Evidence)
+admin.site.register(Legislation)
 admin.site.register(Charge)

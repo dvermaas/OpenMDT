@@ -25,3 +25,7 @@
 .htmx-indicator.htmx-request ~ span {
     display: none;
 }
+
+button.navbar-toggler {
+    border: 0;
+}

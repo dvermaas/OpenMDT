@@ -18,7 +18,6 @@ def detail(request, pk):
     return render(request, "profiles/detail.html", context)
 
 
-@login_required
 def detail_picture_form(request, pk):
     profile = get_object_or_404(Profile, pk=pk)
     context = {"profile": profile}
@@ -32,7 +31,6 @@ def detail_picture_form(request, pk):
     return render(request, "profiles/partials/picture-form.html", context)
 
 
-@login_required
 def detail_info_form(request, pk):
     profile = get_object_or_404(Profile, pk=pk)
     context = {"profile": profile}
@@ -46,7 +44,6 @@ def detail_info_form(request, pk):
     return render(request, "profiles/partials/info-form.html", context)
 
 
-@login_required
 def detail_summary_form(request, pk):
     profile = get_object_or_404(Profile, pk=pk)
     context = {"profile": profile}
