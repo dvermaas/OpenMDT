@@ -14,8 +14,8 @@ class Notification(models.Model):
     body = models.TextField(max_length=1024)
     type = models.CharField(
         max_length=32,
-        choices=[("info", "Info"), ("warning", "Warning"), ("error", "Error")],
-        default="Info",
+        choices=[("info", "Info"), ("warning", "Warning"), ("danger", "Error")],
+        default="info",
     )
     created_at = models.DateTimeField(auto_now_add=True)
 

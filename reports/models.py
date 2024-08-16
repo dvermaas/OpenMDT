@@ -3,22 +3,13 @@ from django.db import models
 from simple_history.models import HistoricalRecords
 
 from common.models import Tag
+from legislations.models import Legislation
 from profiles.models import Profile
 
 
 class Evidence(models.Model):
     title = models.CharField(max_length=256)
     picture = models.ImageField(upload_to="reports/images")
-
-    def __str__(self):
-        return self.title
-
-
-class Legislation(models.Model):
-    title = models.CharField(max_length=256)
-    description = models.TextField(max_length=1024)
-    time = models.IntegerField()
-    fine = models.IntegerField()
 
     def __str__(self):
         return self.title
@@ -46,7 +37,7 @@ class Report(models.Model):
 
 class Suspect(models.Model):
     profile = models.ForeignKey(
-        Profile, on_delete=models.CASCADE, related_name="report_appearances"
+        Profile, on_delete=models.CASCADE, related_name="suspect_appearances"
     )
     report = models.ForeignKey(
         Report, on_delete=models.CASCADE, related_name="suspects"
@@ -54,7 +45,7 @@ class Suspect(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.profile)
+        return f"{self.report} (#{self.report.pk}) | {self.profile}"
 
 
 class Charge(models.Model):

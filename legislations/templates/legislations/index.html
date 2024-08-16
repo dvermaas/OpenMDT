@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-flex">
+        <div class="row">
+            {% for legislation in legislations %}
+                <div class="col-md-3">
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <i class="bi bi-circle-fill text-{{ legislation.type }}" data-bs-toggle="tooltip"
+                               title="{{ legislation.get_type_display }}"></i> {{ legislation.title }}
+                        </div>
+                        <div class="card-body">
+                            {{ legislation.description }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

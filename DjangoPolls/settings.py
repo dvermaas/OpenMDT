@@ -1,5 +1,6 @@
-from pathlib import Path
 import os
+from pathlib import Path
+
 import environ
 
 env = environ.Env(
@@ -29,6 +30,7 @@ INSTALLED_APPS = [
     "common.apps.CommonConfig",
     "reports.apps.ReportConfig",
     "profiles.apps.ProfilesConfig",
+    "legislations.apps.LegislationsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -144,7 +146,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # Media
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "uploads"
-
 
 # Storage
 # STORAGES = {

@@ -17,7 +17,7 @@
 
                     <!--Summary card-->
                     <div class="col-md-12 mt-4" id="summary">
-                        {% include "profiles/partials/summary.html"%}
+                        {% include "profiles/partials/summary.html" %}
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="card-body">
                         {% for tag in profile.tags.all %}
-                            {% include "common/partials/tag.html"%}
+                            {% include "common/partials/tag.html" %}
                         {% endfor %}
                     </div>
                 </div>
@@ -54,8 +54,8 @@
                         <span>Charges</span>
                     </div>
                     <div class="card-body">
-                        {%  for suspect in profile.report_appearances %}
-                            <span class="badge text-bg-info opacity-100">{{ suspect.report.title }}</span>
+                        {% for charge_name, count in charges.items %}
+                            <span class="badge text-bg-info opacity-100">#{{ charge_name }} x{{ count }}</span>
                         {% endfor %}
 
                     </div>

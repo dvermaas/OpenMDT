@@ -1,8 +1,11 @@
+from collections import Counter
+
 from django.http import QueryDict
 from django.shortcuts import render, get_object_or_404
 
 from profiles.forms import ProfileInfoForm, ProfileSummaryForm, ProfilePictureForm
 from profiles.models import Profile
+from reports.models import Charge
 
 
 def index(request):
@@ -13,7 +16,10 @@ def index(request):
 
 def detail(request, pk):
     profile = get_object_or_404(Profile, pk=pk)
-    context = {"profile": profile}
+    charges = Counter(
+        str(charge) for charge in Charge.objects.filter(suspect__profile=profile)
+    )
+    context = {"profile": profile, "charges": charges}
     return render(request, "profiles/detail.html", context)
 
 
