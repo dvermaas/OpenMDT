@@ -15,7 +15,7 @@ services:
       - DEBUG=on
       - SECRET_KEY="wb1j9+vxe2b#1dfu+2zgiaoa1v@q@wub15i75r=!*mol39k-qo"
       - DATABASE_URL=postgres://postgres:testme123@db:5432/postgres
-      - ALLOWED_HOSTS=localhost
+      - ALLOWED_HOSTS=localhost,127.0.0.1
     ports:
       - "8000:8994"
     develop:

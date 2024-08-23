@@ -1,28 +1,21 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <div class="card mt-4">
-                    <div class="card-header">
-                        filter here
-                    </div>
-                </div>
+            <div class="col-md-3 mt-4">
+                <input class="form-control" type="search"
+                       name="query" placeholder="Begin Typing To Search Legislation"
+                       hx-post="{% url 'legislations:index' %}"
+                       hx-trigger="input changed delay:500ms, search"
+                       hx-target="#filtered-results">
             </div>
-            {% for legislation in legislations %}
-                <div class="col-md-3">
-                    <div class="card mt-4">
-                        <div class="card-header">
-                            <i class="bi bi-circle-fill text-{{ legislation.type }}" data-bs-toggle="tooltip"
-                               title="{{ legislation.get_type_display }}"></i> {{ legislation.title }}
-                        </div>
-                        <div class="card-body">
-                            {{ legislation.description }}
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
         </div>
+
+        <div id="filtered-results" class="row">
+            {% include "legislations/partials/filtered.html" %}
+        </div>
+
     </div>
 {% endblock content %}

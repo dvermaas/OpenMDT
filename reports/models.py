@@ -44,8 +44,12 @@ class Suspect(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
+    @property
+    def time(self):
+        return self.charges
+
     def __str__(self):
-        return f"{self.report} (#{self.report.pk}) | {self.profile}"
+        return str(self.profile)
 
 
 class Charge(models.Model):
