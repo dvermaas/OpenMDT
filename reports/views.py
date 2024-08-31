@@ -3,9 +3,9 @@ from django.http import QueryDict
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView
 
-from .models import Report, Suspect
 from profiles.models import Profile
 from .forms import ReportForm, ReportCrispyForm
+from .models import Report, Suspect
 
 
 class ReportCreateView(LoginRequiredMixin, CreateView):

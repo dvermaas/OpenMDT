@@ -52,6 +52,15 @@ class Suspect(models.Model):
         return str(self.profile)
 
 
+class Statement(models.Model):
+    body = models.TextField()
+    report = models.ForeignKey(
+        Report, on_delete=models.CASCADE, related_name="statements"
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
 class Charge(models.Model):
     legislation = models.ForeignKey(Legislation, on_delete=models.CASCADE)
     suspect = models.ForeignKey(

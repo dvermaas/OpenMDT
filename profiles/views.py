@@ -9,7 +9,7 @@ from reports.models import Charge
 
 
 def index(request):
-    latest_profile_list = Profile.objects.order_by("-created_at")[:]
+    latest_profile_list = Profile.objects.order_by("name")
     context = {"latest_profile_list": latest_profile_list}
     return render(request, "profiles/index.html", context)
 
