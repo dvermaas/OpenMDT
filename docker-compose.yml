@@ -25,3 +25,6 @@ services:
           target: /app
     depends_on:
       - db
+      - redis
+  redis:
+    image: "redis:alpine"

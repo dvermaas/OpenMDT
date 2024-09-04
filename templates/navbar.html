@@ -39,7 +39,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <form method="post" action="{% url 'logout' %}">
+                            <form method="post" action="{% url 'accounts:logout' %}">
                                 {% csrf_token %}
                                 <button class="dropdown-item" type="submit">Logout</button>
                             </form>

@@ -27,6 +27,7 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[])
 # Application definition
 
 INSTALLED_APPS = [
+    "accounts.apps.AccountsConfig",
     "common.apps.CommonConfig",
     "reports.apps.ReportConfig",
     "profiles.apps.ProfilesConfig",
@@ -102,6 +103,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "accounts.User"
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -116,7 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "templates/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
@@ -146,6 +149,20 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # Media
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "uploads"
+
+# Cache
+REDIS_HOST = env("REDIS_HOST", "localhost")
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": f"redis://{REDIS_HOST}:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    }
+}
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
 
 # Storage
 # STORAGES = {

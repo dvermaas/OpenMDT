@@ -1,7 +1,7 @@
-from django.contrib.auth.models import User
 from django.db import models
 from simple_history.models import HistoricalRecords
 
+from accounts.models import User
 from common.models import Tag
 from legislations.models import Legislation
 from profiles.models import Profile

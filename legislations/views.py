@@ -9,6 +9,8 @@ def index(request):
     context = {"legislations": legislations, "form": forms.LegislationSearchForm()}
 
     if request.POST:
+        print("borpa", request.META.get("REMOTE_ADDR"))
+        print("spin", request.META.get("HTTP_X_FORWARDED_FOR"))
         query = request.POST.get("query")
         legislations = legislations.filter(title__icontains=query)
         return render(
