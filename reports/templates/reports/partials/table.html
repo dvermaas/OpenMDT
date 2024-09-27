@@ -1,5 +1,6 @@
-<table class="table table-striped">
-    <thead>
+<div id="report-table-container">
+    <table class="table table-striped">
+        <thead>
         <tr>
             <th>ID</th>
             <th>Title</th>
@@ -7,20 +8,60 @@
             <th>Created By</th>
             <th>Created At</th>
         </tr>
-    </thead>
-    <tbody>
-        {% for report in latest_report_list %}
+        </thead>
+        <tbody>
+        {% for report in reports %}
             <tr>
                 <td><a href="/reports/detail/{{ report.id }}/">{{ report.id }}</a></td>
                 <td>{{ report }}</td>
                 <td>
                     {% for tag in report.tags.all %}
-                        {% include "common/partials/tag.html"%}
+                        {% include "common/partials/tag.html" %}
                     {% endfor %}
                 </td>
                 <td>{{ report.created_by }}</td>
                 <td>{{ report.created_at }}</td>
             </tr>
         {% endfor %}
-    </tbody>
-</table>
+        </tbody>
+    </table>
+
+    <!-- Pagination Controls -->
+    <div class="pagination">
+        {% if reports.has_previous %}
+            <button class="btn btn-primary m-2"
+                    hx-get="{% url 'reports:report_tabulated' %}?page={{ reports.previous_page_number }}"
+                    hx-target="#report-table-container"
+                    hx-swap="outerHTML">
+                Previous
+            </button>
+        {% endif %}
+
+        {% for i in reports.paginator.page_range %}
+            {% if reports.number == i %}
+                <button class="btn btn-primary active m-1"
+                        hx-get="{% url 'reports:report_tabulated' %}?page={{ i }}"
+                        hx-target="#report-table-container"
+                        hx-swap="outerHTML">
+                    {{ i }}
+                </button>
+            {% else %}
+                <button class="btn btn-primary m-1"
+                        hx-get="{% url 'reports:report_tabulated' %}?page={{ i }}"
+                        hx-target="#report-table-container"
+                        hx-swap="outerHTML">
+                    {{ i }}
+                </button>
+            {% endif %}
+        {% endfor %}
+
+        {% if reports.has_next %}
+            <button class="btn btn-primary m-2"
+                    hx-get="{% url 'reports:report_tabulated' %}?page={{ reports.next_page_number }}"
+                    hx-target="#report-table-container"
+                    hx-swap="outerHTML">
+                Next
+            </button>
+        {% endif %}
+    </div>
+</div>

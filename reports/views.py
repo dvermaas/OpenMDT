@@ -1,11 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator
 from django.http import QueryDict
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView
 
 from profiles.models import Profile
-from .forms import ReportForm, ReportCrispyForm
-from .models import Report, Suspect
+from reports.forms import ReportForm, ReportCrispyForm
+from reports.models import Report, Suspect
 
 
 class ReportCreateView(LoginRequiredMixin, CreateView):
@@ -29,9 +30,17 @@ def add_suspect_to_report(request, report_id):
 
 
 def index(request):
-    latest_report_list = Report.objects.filter(is_active=True).order_by("-created_at")
-    context = {"latest_report_list": latest_report_list}
+    reports = Report.objects.filter(is_active=True).order_by("-created_at")
+    context = {"latest_report_list": reports}
     return render(request, "reports/index.html", context)
+
+
+def report_tabulated(request):
+    reports = Report.objects.filter(is_active=True).order_by("-created_at")
+    paginator = Paginator(reports, 25)
+    page = paginator.get_page(request.GET.get("page"))
+    context = {"reports": page}
+    return render(request, "reports/partials/table.html", context)
 
 
 def detail(request, pk):

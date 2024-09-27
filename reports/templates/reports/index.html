@@ -3,16 +3,6 @@
 {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 mt-4">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <span>Filters</span>
-                    </div>
-                    <div class="card-body">
-
-                    </div>
-                </div>
-            </div>
 
             <div class="col-md-12 mt-4">
                 <div class="card">
@@ -22,7 +12,24 @@
                             <i class="bi bi-plus"></i>
                         </a>
                     </div>
-                    {% include "reports/partials/table.html" %}
+
+                    <!-- Container for the report table -->
+                    <div id="report-table-container"
+                         hx-get="{% url 'reports:report_tabulated' %}?page=1"
+                         hx-trigger="load"
+                         hx-target="#report-table-container"
+                         hx-swap="outerHTML"
+                         hx-indicator="#loading-indicator">
+
+                        <!-- Loading indicator that appears when data is being fetched -->
+                        <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+                            <div id="loading-indicator">
+                                <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
