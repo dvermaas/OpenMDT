@@ -151,18 +151,19 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "uploads"
 
 # Cache
-REDIS_HOST = env("REDIS_HOST", "localhost")
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": f"redis://{REDIS_HOST}:6379/1",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        },
+if env.str("REDIS_HOST", False):
+    REDIS_HOST = env.str("REDIS_HOST")
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": f"redis://{REDIS_HOST}:6379/1",
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            },
+        }
     }
-}
-SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-SESSION_CACHE_ALIAS = "default"
+    SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+    SESSION_CACHE_ALIAS = "default"
 
 # Storage
 # STORAGES = {
@@ -181,3 +182,18 @@ SESSION_CACHE_ALIAS = "default"
 #         },
 #     },
 # }
+
+# Logging
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+}

@@ -28,40 +28,13 @@
 
     <!-- Pagination Controls -->
     <div class="pagination">
-        {% if reports.has_previous %}
-            <button class="btn btn-primary m-2"
-                    hx-get="{% url 'reports:report_tabulated' %}?page={{ reports.previous_page_number }}"
-                    hx-target="#report-table-container"
-                    hx-swap="outerHTML">
-                Previous
-            </button>
-        {% endif %}
-
         {% for i in reports.paginator.page_range %}
-            {% if reports.number == i %}
-                <button class="btn btn-primary active m-1"
-                        hx-get="{% url 'reports:report_tabulated' %}?page={{ i }}"
-                        hx-target="#report-table-container"
-                        hx-swap="outerHTML">
-                    {{ i }}
-                </button>
-            {% else %}
-                <button class="btn btn-primary m-1"
-                        hx-get="{% url 'reports:report_tabulated' %}?page={{ i }}"
-                        hx-target="#report-table-container"
-                        hx-swap="outerHTML">
-                    {{ i }}
-                </button>
-            {% endif %}
-        {% endfor %}
-
-        {% if reports.has_next %}
-            <button class="btn btn-primary m-2"
-                    hx-get="{% url 'reports:report_tabulated' %}?page={{ reports.next_page_number }}"
+            <button class="btn btn-primary m-1 {% if reports.number == i %} active {% endif %}"
+                    hx-get="{% url 'reports:report_tabulated' %}?page={{ i }}"
                     hx-target="#report-table-container"
                     hx-swap="outerHTML">
-                Next
+                {{ i }}
             </button>
-        {% endif %}
+        {% endfor %}
     </div>
 </div>

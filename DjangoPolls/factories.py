@@ -1,5 +1,6 @@
 import factory
-from django.contrib.auth.models import User
+
+from accounts.models import User
 
 
 class UserFactory(factory.django.DjangoModelFactory):
@@ -10,3 +11,4 @@ class UserFactory(factory.django.DjangoModelFactory):
     first_name = factory.Faker("first_name")
     last_name = factory.Faker("last_name")
     email = factory.Faker("email")
+    badge_number = factory.Faker("random_int", min=100, max=999)

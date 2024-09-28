@@ -16,6 +16,7 @@ urlpatterns = [
     path(
         "legislations/", include(("legislations.urls", "legislations"), "legislations")
     ),
+    path("common/", include(("common.urls", "common"), "common")),
     path("api/", api.urls),
     path("favicon.ico", RedirectView.as_view(url="/templates/favicon.ico")),
 ]

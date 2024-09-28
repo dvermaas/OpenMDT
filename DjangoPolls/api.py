@@ -1,8 +1,8 @@
 from ninja import NinjaAPI
 
+from reports.api import router as reports_router
+
 api = NinjaAPI()
 
-
-@api.get("/hello")
-def hello(request):
-    return "Hello world"
+api.add_router("/reports/", reports_router)
+api.add_router("/profiles/", "profiles.api.router")

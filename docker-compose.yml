@@ -16,6 +16,7 @@ services:
       - SECRET_KEY="wb1j9+vxe2b#1dfu+2zgiaoa1v@q@wub15i75r=!*mol39k-qo"
       - DATABASE_URL=postgres://postgres:testme123@db:5432/postgres
       - ALLOWED_HOSTS=localhost,127.0.0.1
+      - REDIS_HOST=redis
     ports:
       - "8000:8994"
     develop:
@@ -27,4 +28,5 @@ services:
       - db
       - redis
   redis:
-    image: "redis:alpine"
+    image: redis:alpine
+    container_name: redis
