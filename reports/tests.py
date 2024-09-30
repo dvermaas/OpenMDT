@@ -1,6 +1,6 @@
 from django.test import TestCase
-from django.contrib.auth.models import User
 
+from accounts.models import User
 from reports.models import Report
 
 
@@ -11,6 +11,5 @@ class ReportTestCase(TestCase):
         Report.objects.create(title="Test Report", created_by=user)
 
     def test_created_report_exists(self):
-        """Animals that can speak are correctly identified"""
         report = Report.objects.first()
         self.assertEqual(report.title, "Test Report")

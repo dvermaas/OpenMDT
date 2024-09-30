@@ -35,7 +35,7 @@ def index(request):
     return render(request, "reports/index.html", context)
 
 
-def report_tabulated(request):
+def table(request):
     reports = Report.objects.filter(is_active=True).order_by("-created_at")
     paginator = Paginator(reports, 25)
     page = paginator.get_page(request.GET.get("page"))
