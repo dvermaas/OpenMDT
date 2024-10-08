@@ -19,6 +19,7 @@ urlpatterns = [
     path("common/", include(("common.urls", "common"), "common")),
     path("api/", api.urls),
     path("favicon.ico", RedirectView.as_view(url="/templates/favicon.ico")),
+    path("silk/", include("silk.urls", namespace="silk")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

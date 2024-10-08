@@ -3,24 +3,20 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Title</th>
+            <th>Name</th>
             <th>Tags</th>
-            <th>Created By</th>
-            <th>Created At</th>
         </tr>
         </thead>
         <tbody>
-        {% for report in reports %}
+        {% for profile in profiles %}
             <tr>
-                <td><a href="/reports/detail/{{ report.id }}/">{{ report.id }}</a></td>
-                <td>{{ report }}</td>
+                <td><a href="/profiles/detail/{{ profile.id }}/">{{ profile.id }}</a></td>
+                <td>{{ profile }}</td>
                 <td>
-                    {% for tag in report.tags.all %}
+                    {% for tag in profile.tags.all %}
                         {% include "common/partials/tag.html" %}
                     {% endfor %}
                 </td>
-                <td>{{ report.created_by }}</td>
-                <td>{{ report.created_at }}</td>
             </tr>
         {% endfor %}
         </tbody>
@@ -28,9 +24,9 @@
 
     <!-- Pagination Controls -->
     <div class="pagination">
-        {% for i in reports.paginator.page_range %}
-            <button class="btn btn-primary m-1 {% if reports.number == i %} active {% endif %}"
-                    hx-get="{% url 'reports:tabulated' %}?page={{ i }}"
+        {% for i in profiles.paginator.page_range %}
+            <button class="btn btn-primary m-1 {% if profiles.number == i %} active {% endif %}"
+                    hx-get="{% url 'profiles:tabulated' %}?page={{ i }}"
                     hx-target="#table-container"
                     hx-swap="outerHTML">
                 {{ i }}

@@ -14,10 +14,10 @@
                     </div>
 
                     <!-- Container for the report table -->
-                    <div id="report-table-container"
-                         hx-get="{% url 'reports:report_tabulated' %}?page=1"
+                    <div id="table-container"
+                         hx-get="{% url 'reports:tabulated' %}?page=1"
                          hx-trigger="load"
-                         hx-target="#report-table-container"
+                         hx-target="#table-container"
                          hx-swap="outerHTML"
                          hx-indicator="#loading-indicator">
 
