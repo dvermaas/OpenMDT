@@ -14,10 +14,11 @@
     padding: 0;
 }
 
-/*.card {*/
-/*    border: 0;*/
-/*}*/
+button.navbar-toggler {
+    border: 0;
+}
 
+/*htmx stuff*/
 .htmx-indicator {
     display: none
 }
@@ -30,6 +31,8 @@
     display: none;
 }
 
-button.navbar-toggler {
-    border: 0;
+/*bootstrap spinner*/
+.spinner-grow {
+    width: 3rem;
+    height: 3rem;
 }

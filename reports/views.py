@@ -30,15 +30,13 @@ def add_suspect_to_report(request, report_id):
 
 
 def index(request):
-    reports = Report.objects.filter(is_active=True).order_by("-created_at")
-    context = {"latest_report_list": reports}
-    return render(request, "reports/index.html", context)
+    return render(request, "reports/index.html")
 
 
 def table(request):
     reports = Report.objects.filter(is_active=True).order_by("-created_at")
-    paginator = Paginator(reports, 25)
-    page = paginator.get_page(request.GET.get("page"))
+    paginator = Paginator(reports, 15)
+    page = paginator.get_page(request.GET.get("page", 1))
     context = {"reports": page}
     return render(request, "reports/partials/table.html", context)
 
