@@ -10,6 +10,7 @@ services:
       - POSTGRES_PASSWORD=testme123
   webapp:
     build: .
+    image: djangopolls:latest
     container_name: django
     environment:
       - DEBUG=on
@@ -17,6 +18,11 @@ services:
       - DATABASE_URL=postgres://postgres:testme123@db:5432/postgres
       - ALLOWED_HOSTS=localhost,127.0.0.1
       - REDIS_HOST=redis
+      - AWS_ACCESS_KEY_ID=access_key
+      - AWS_SECRET_ACCESS_KEY=secret_key
+      - AWS_STORAGE_BUCKET_NAME=mybucket
+      - AWS_S3_ENDPOINT_URL=http://minio:9000
+      - AWS_S3_USE_SSL=off
     ports:
       - "8000:8994"
     develop:
@@ -27,6 +33,24 @@ services:
     depends_on:
       - db
       - redis
+      - minio
   redis:
     image: redis:alpine
     container_name: redis
+  av:
+    image: clamav/clamav:stable_base
+    container_name: av
+    volumes:
+      - ./data/av:/var/lib/clamav
+  minio:
+    container_name: minio
+    image: 'bitnami/minio:latest'
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=testme123
+      - MINIO_DEFAULT_BUCKETS=mdt-ont
+    volumes:
+      - ./data/minio:/bitnami/minio/data
