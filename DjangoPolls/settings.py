@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "simple_history",
     "crispy_forms",
     "crispy_bootstrap5",
-    # "storages",
+    "storages",
 ]
 
 MIDDLEWARE = [
@@ -146,7 +146,7 @@ CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
 # Django Silk
 SILKY_AUTHORISATION = True
 SILKY_META = True
-SILKY_MAX_RECORDED_REQUESTS = 10 ** 4
+SILKY_MAX_RECORDED_REQUESTS = 10**4
 
 # Crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -172,22 +172,31 @@ if env.str("REDIS_HOST", False):
     SESSION_CACHE_ALIAS = "default"
 
 # Storage
-# STORAGES = {
-#     "default": {
-#         "BACKEND": "storages.backends.s3.S3Storage",
-#         "OPTIONS": {
-#             "endpoint_url": env("AWS_S3_ENDPOINT_URL"),
-#             "bucket_name": env("AWS_S3_BUCKET_NAME"),
-#         },
-#     },
-#     "staticfiles": {
-#         "BACKEND": "storages.backends.s3.S3Storage",
-#         "OPTIONS": {
-#             "endpoint_url": env("AWS_S3_ENDPOINT_URL"),
-#             "bucket_name": env("AWS_S3_BUCKET_NAME"),
-#         },
-#     },
-# }
+if env.bool("USE_S3", False):
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.s3.S3Storage",
+            "OPTIONS": {
+                "access_key": env.str("AWS_ACCESS_KEY_ID"),
+                "secret_key": env.str("AWS_SECRET_ACCESS_KEY"),
+                "bucket_name": env.str("AWS_STORAGE_BUCKET_NAME"),
+                "endpoint_url": env.str("AWS_S3_ENDPOINT_URL"),
+                "location": "media",
+                "signature_version": "s3v4",
+            },
+        },
+        "staticfiles": {
+            "BACKEND": "storages.backends.s3.S3Storage",
+            "OPTIONS": {
+                "access_key": env.str("AWS_ACCESS_KEY_ID"),
+                "secret_key": env.str("AWS_SECRET_ACCESS_KEY"),
+                "bucket_name": env.str("AWS_STORAGE_BUCKET_NAME"),
+                "endpoint_url": env.str("AWS_S3_ENDPOINT_URL"),
+                "location": "static",
+                "signature_version": "s3v4",
+            },
+        },
+    }
 
 # Logging
 LOGGING = {
