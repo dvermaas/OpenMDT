@@ -1,4 +1,6 @@
+from crispy_forms.helper import FormHelper
 from django import forms
+
 from .models import Profile
 
 
@@ -15,6 +17,8 @@ class ProfilePictureForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ProfilePictureForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_enctype = "multipart/form-data"
         self.fields["picture"].label = ""
 
 

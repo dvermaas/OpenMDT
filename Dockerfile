@@ -17,6 +17,4 @@ RUN pip install uv && \
 
 COPY . .
 
-RUN python manage.py collectstatic --noinput
-
 ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8994", "--workers", "4", "DjangoPolls.wsgi"]

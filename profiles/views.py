@@ -33,9 +33,8 @@ def detail(request, pk):
 def detail_picture_form(request, pk):
     profile = get_object_or_404(Profile, pk=pk)
     context = {"profile": profile}
-    if request.method == "PUT":
-        data = QueryDict(request.body)
-        form = ProfilePictureForm(data, instance=profile)
+    if request.method == "POST":
+        form = ProfilePictureForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
             return render(request, "profiles/partials/picture.html", context)

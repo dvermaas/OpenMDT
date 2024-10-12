@@ -9,7 +9,7 @@ class Profile(models.Model):
     surname = models.CharField(max_length=256)
     body = models.TextField(max_length=2048, blank=True)
     birthday = models.DateField()
-    picture = models.ImageField(blank=True)
+    picture = models.ImageField(upload_to="profiles/", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag, blank=True)
 

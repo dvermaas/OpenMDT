@@ -24,3 +24,13 @@ services:
           target: /app
     depends_on:
       - db
+      - minio
+  minio:
+    image: 'bitnami/minio:latest'
+    container_name: minio
+    env_file: "prod.env"
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - ./data/minio:/bitnami/minio/data

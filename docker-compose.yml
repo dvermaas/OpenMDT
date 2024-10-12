@@ -43,8 +43,8 @@ services:
     volumes:
       - ./data/av:/var/lib/clamav
   minio:
-    container_name: minio
     image: 'bitnami/minio:latest'
+    container_name: minio
     ports:
       - '9000:9000'
       - '9001:9001'
