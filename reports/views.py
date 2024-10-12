@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.cache import cache
 from django.core.paginator import Paginator
 from django.http import QueryDict
 from django.shortcuts import render, redirect, get_object_or_404
@@ -34,11 +35,17 @@ def index(request):
 
 
 def table(request):
+    page = request.GET.get("page", 1)
+    cache_key = f"reports/table/page={page}"
+    cached_page = cache.get(cache_key)
+    if cached_page:
+        return cached_page
+
     reports = Report.objects.filter(is_active=True).order_by("-created_at")
-    paginator = Paginator(reports, 15)
-    page = paginator.get_page(request.GET.get("page", 1))
-    context = {"reports": page}
-    return render(request, "reports/partials/table.html", context)
+    page = Paginator(reports, 15).get_page(request.GET.get("page", 1))
+    rendered_page = render(request, "reports/partials/table.html", {"reports": page})
+    cache.set(cache_key, rendered_page)
+    return rendered_page
 
 
 def detail(request, pk):
