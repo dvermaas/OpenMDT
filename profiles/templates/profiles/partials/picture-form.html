@@ -6,8 +6,9 @@
         {% if user.is_authenticated %}
             <button class="btn p-0"
                     hx-include="#form"
-                    hx-put="{% url 'profiles:editpicture' profile.id %}"
-                    hx-target="#picture">
+                    hx-post="{% url 'profiles:editpicture' profile.id %}"
+                    hx-target="#picture"
+                    hx-encoding="multipart/form-data">
                 <i class="bi bi-floppy text-info"></i>
             </button>
         {% endif %}
