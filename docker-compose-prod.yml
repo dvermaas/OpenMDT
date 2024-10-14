@@ -8,6 +8,15 @@ services:
     depends_on:
       - django
       - minio
+  cloudflared2:
+    image: cloudflare/cloudflared
+    container_name: cloudflared2
+    env_file: "s3.env"
+    command: tunnel --no-autoupdate run
+    restart: unless-stopped
+    depends_on:
+      - django
+      - minio
   db:
     image: postgres
     container_name: postgres
