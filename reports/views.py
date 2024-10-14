@@ -44,14 +44,19 @@ def table(request):
     reports = Report.objects.filter(is_active=True).order_by("-created_at")
     page = Paginator(reports, 15).get_page(request.GET.get("page", 1))
     rendered_page = render(request, "reports/partials/table.html", {"reports": page})
-    cache.set(cache_key, rendered_page)
+    cache.set(cache_key, rendered_page, 60 * 5)
     return rendered_page
 
 
 def detail(request, pk):
+    cache_key = f"reports/detail/{pk}"
+    cached_page = cache.get(cache_key)
+    if cached_page:
+        return cached_page
     report = get_object_or_404(Report, pk=pk)
-    context = {"report": report}
-    return render(request, "reports/detail.html", context)
+    rendered_page = render(request, "reports/detail.html", {"report": report})
+    cache.set(cache_key, rendered_page, 60 * 5)
+    return rendered_page
 
 
 def detail_info_form(request, pk):

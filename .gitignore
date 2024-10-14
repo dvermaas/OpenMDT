@@ -139,6 +139,7 @@ GitHub.sublime-settings
 
 # Dockercompose
 data/
+data_prd/
 
 # Media
 uploads/

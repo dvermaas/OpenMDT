@@ -135,7 +135,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Debug toolbar
-if env.bool("DEBUG_TOOLBAR", False):
+if env.bool(" DEBUG_TOOLBAR", False):
     INTERNAL_IPS = ["127.0.0.1"]
 
 LOGIN_REDIRECT_URL = "/"
@@ -170,30 +170,30 @@ if env.str("REDIS_HOST", False):
     }
     SESSION_ENGINE = "django.contrib.sessions.backends.cache"
     SESSION_CACHE_ALIAS = "default"
+    CACHE_TIMEOUT = 60 * 60 * 24 * 7
 
 # Storage
 if env.bool("USE_S3", False):
+    AWS_S3_ACCESS_KEY_ID = env.str("AWS_ACCESS_KEY_ID")
+    AWS_S3_SECRET_ACCESS_KEY = env.str("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME")
+    AWS_S3_ENDPOINT_URL = env.str("AWS_S3_ENDPOINT_URL")
+    AWS_S3_CUSTOM_DOMAIN = env.str("AWS_S3_CUSTOM_DOMAIN", None)
+    AWS_S3_SIGNATURE_VERSION = env.str("AWS_S3_SIGNATURE_VERSION", "s3v4")
+    if AWS_S3_CUSTOM_DOMAIN and DEBUG:
+        AWS_S3_URL_PROTOCOL = "http:"
     STORAGES = {
         "default": {
             "BACKEND": "storages.backends.s3.S3Storage",
+            # "BACKEND": "DjangoPolls.s3.CustomDomainFixedUpS3Boto3Storage",
             "OPTIONS": {
-                "access_key": env.str("AWS_ACCESS_KEY_ID"),
-                "secret_key": env.str("AWS_SECRET_ACCESS_KEY"),
-                "bucket_name": env.str("AWS_STORAGE_BUCKET_NAME"),
-                "endpoint_url": env.str("AWS_S3_ENDPOINT_URL"),
                 "location": "media",
-                "signature_version": "s3v4",
             },
         },
         "staticfiles": {
-            "BACKEND": "storages.backends.s3.S3Storage",
+            "BACKEND": "storages.backends.s3.S3StaticStorage",
             "OPTIONS": {
-                "access_key": env.str("AWS_ACCESS_KEY_ID"),
-                "secret_key": env.str("AWS_SECRET_ACCESS_KEY"),
-                "bucket_name": env.str("AWS_STORAGE_BUCKET_NAME"),
-                "endpoint_url": env.str("AWS_S3_ENDPOINT_URL"),
                 "location": "static",
-                "signature_version": "s3v4",
             },
         },
     }

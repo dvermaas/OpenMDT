@@ -6,22 +6,20 @@ services:
     command: tunnel --no-autoupdate run
     restart: unless-stopped
     depends_on:
-      - webapp
+      - django
+      - minio
   db:
     image: postgres
     container_name: postgres
     env_file: "prod.env"
     volumes:
-      - ./data/prd/db:/var/lib/postgresql/data
-  webapp:
+      - ./data_prd/prd/db:/var/lib/postgresql/data
+  django:
     image: dvermaas/django:latest
     container_name: django
     env_file: "prod.env"
-    develop:
-      watch:
-        - action: sync
-          path: .
-          target: /app
+    ports:
+      - '8994:8994'
     depends_on:
       - db
       - minio
@@ -33,4 +31,9 @@ services:
       - '9000:9000'
       - '9001:9001'
     volumes:
-      - ./data/minio:/bitnami/minio/data
+      - ./data_prd/minio:/bitnami/minio/data
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://minio:9000/minio/health/live" ]
+      interval: 10s
+      timeout: 5s
+      retries: 6
