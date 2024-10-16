@@ -7,16 +7,6 @@ services:
     restart: unless-stopped
     depends_on:
       - django
-      - minio
-  cloudflared2:
-    image: cloudflare/cloudflared
-    container_name: cloudflared2
-    env_file: "s3.env"
-    command: tunnel --no-autoupdate run
-    restart: unless-stopped
-    depends_on:
-      - django
-      - minio
   db:
     image: postgres
     container_name: postgres
@@ -24,25 +14,10 @@ services:
     volumes:
       - ./data_prd/prd/db:/var/lib/postgresql/data
   django:
-    image: dvermaas/django:latest
+    build: .
     container_name: django
     env_file: "prod.env"
     ports:
       - '8994:8994'
     depends_on:
       - db
-      - minio
-  minio:
-    image: 'bitnami/minio:latest'
-    container_name: minio
-    env_file: "prod.env"
-    ports:
-      - '9000:9000'
-      - '9001:9001'
-    volumes:
-      - ./data_prd/minio:/bitnami/minio/data
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://minio:9000/minio/health/live" ]
-      interval: 10s
-      timeout: 5s
-      retries: 6

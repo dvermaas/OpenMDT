@@ -172,16 +172,20 @@ if env.str("REDIS_HOST", False):
     SESSION_CACHE_ALIAS = "default"
     CACHE_TIMEOUT = 60 * 60 * 24 * 7
 
+AWS_S3_ACCESS_KEY_ID = env.str("AWS_S3_ACCESS_KEY_ID")
+AWS_S3_SECRET_ACCESS_KEY = env.str("AWS_S3_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME")
+AWS_S3_ENDPOINT_URL = env.str("AWS_S3_ENDPOINT_URL")
+AWS_S3_CUSTOM_DOMAIN = env.str("AWS_S3_CUSTOM_DOMAIN", None)
+AWS_S3_SIGNATURE_VERSION = env.str("AWS_S3_SIGNATURE_VERSION", "s3v4")
+AWS_S3_VERIFY = env.str("AWS_S3_VERIFY", False)
+AWS_S3_USE_SSL = env.str("AWS_S3_VERIFY", True)
+AWS_S3_REGION_NAME = env.str("AWS_S3_REGION_NAME", "us-east-1")
 # Storage
 if env.bool("USE_S3", False):
-    AWS_S3_ACCESS_KEY_ID = env.str("AWS_ACCESS_KEY_ID")
-    AWS_S3_SECRET_ACCESS_KEY = env.str("AWS_SECRET_ACCESS_KEY")
-    AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME")
-    AWS_S3_ENDPOINT_URL = env.str("AWS_S3_ENDPOINT_URL")
-    AWS_S3_CUSTOM_DOMAIN = env.str("AWS_S3_CUSTOM_DOMAIN", None)
-    AWS_S3_SIGNATURE_VERSION = env.str("AWS_S3_SIGNATURE_VERSION", "s3v4")
-    if AWS_S3_CUSTOM_DOMAIN and DEBUG:
-        AWS_S3_URL_PROTOCOL = "http:"
+
+    # if AWS_S3_CUSTOM_DOMAIN and DEBUG:
+    #     AWS_S3_URL_PROTOCOL = "http:"
     STORAGES = {
         "default": {
             "BACKEND": "storages.backends.s3.S3Storage",
@@ -191,9 +195,11 @@ if env.bool("USE_S3", False):
             },
         },
         "staticfiles": {
-            "BACKEND": "storages.backends.s3.S3StaticStorage",
+            "BACKEND": "storages.backends.s3.S3Storage",
             "OPTIONS": {
-                "location": "static",
+                "signature_version": "s3v4",
+                "use_ssl": True,
+                "client_config": None,
             },
         },
     }
@@ -212,3 +218,44 @@ LOGGING = {
         "level": "WARNING",
     },
 }
+
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "formatters": {
+#         "verbose": {
+#             "format": "{levelname} {asctime} {module} {message}",
+#             "style": "{",
+#         },
+#         "simple": {
+#             "format": "{levelname} {message}",
+#             "style": "{",
+#         },
+#     },
+#     "handlers": {
+#         "console": {
+#             "class": "logging.StreamHandler",
+#             "stream": sys.stdout,  # Log to stdout
+#             "formatter": "verbose",  # Choose your desired formatter
+#         },
+#     },
+#     "loggers": {
+#         "django": {
+#             "handlers": ["console"],
+#             "level": os.getenv(
+#                 "DJANGO_LOG_LEVEL", "DEBUG"
+#             ),  # Set log level through environment variable
+#             "propagate": True,
+#         },
+#         "boto3": {
+#             "handlers": ["console"],
+#             "level": os.getenv("DJANGO_LOG_LEVEL", "DEBUG"),
+#             "propagate": True,
+#         },
+#         "botocore": {
+#             "handlers": ["console"],
+#             "level": os.getenv("DJANGO_LOG_LEVEL", "DEBUG"),
+#             "propagate": True,
+#         },
+#     },
+# }
