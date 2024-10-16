@@ -14,7 +14,7 @@ services:
     volumes:
       - ./data_prd/prd/db:/var/lib/postgresql/data
   django:
-    build: .
+    image: dvermaas/django:latest
     container_name: django
     env_file: "prod.env"
     ports:
