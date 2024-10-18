@@ -156,6 +156,9 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "uploads"
 
+# Client Cache
+USE_ETAGS = True
+
 # Cache
 if env.bool("USE_CACHE", False):
     REDIS_HOST = env.str("REDIS_HOST")
