@@ -1,3 +1,5 @@
+{% load humanize %}
+
 <div id="table-container">
     <table class="table table-striped">
         <thead>
@@ -12,7 +14,7 @@
         <tbody>
         {% for report in reports %}
             <tr>
-                <td><a href="/reports/detail/{{ report.id }}/">{{ report.id }}</a></td>
+                <td><a class="badge rounded-pill text-bg-primary" href="/reports/detail/{{ report.id }}/">#{{ report.id }}</a></td>
                 <td>{{ report }}</td>
                 <td>
                     {% for tag in report.tags.all %}
@@ -20,7 +22,7 @@
                     {% endfor %}
                 </td>
                 <td>{{ report.created_by }}</td>
-                <td>{{ report.created_at }}</td>
+                <td>{{ report.created_at|naturaltime }}</td>
             </tr>
         {% endfor %}
         </tbody>
