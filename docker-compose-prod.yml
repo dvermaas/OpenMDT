@@ -19,7 +19,6 @@ services:
   django:
     image: dvermaas/django:latest
     container_name: django
-    env_file: "prod.env"
     ports:
       - '8994:8994'
     depends_on:
