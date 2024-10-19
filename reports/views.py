@@ -1,7 +1,9 @@
+import hashlib
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.cache import cache
 from django.core.paginator import Paginator
-from django.http import QueryDict
+from django.http import QueryDict, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView
 
@@ -51,10 +53,16 @@ def table(request):
 def detail(request, pk):
     cache_key = f"reports/detail/{pk}"
     cached_page = cache.get(cache_key)
+    print("hmm", cached_page)
     if cached_page:
+        print("debug", request.headers.get("If-None-Match"))
+        if request.headers.get("If-None-Match") == cached_page["ETag"]:
+            return HttpResponse(status=304)
         return cached_page
     report = get_object_or_404(Report, pk=pk)
     rendered_page = render(request, "reports/detail.html", {"report": report})
+    rendered_page["ETag"] = hashlib.md5(rendered_page.content).hexdigest()
+    rendered_page["Cache-Control"] = "max-age=300, must-revalidate"
     cache.set(cache_key, rendered_page, 60 * 5)
     return rendered_page
 
