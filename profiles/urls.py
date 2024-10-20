@@ -11,5 +11,4 @@ urlpatterns = [
     path("edit-summary/<int:pk>/", views.detail_summary_form, name="editsummary"),
     path("edit-picture/<int:pk>/", views.detail_picture_form, name="editpicture"),
     path("delete/<int:pk>/", views.delete, name="delete"),
-    path("test/", views.test, name="test"),
 ]

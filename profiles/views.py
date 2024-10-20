@@ -15,7 +15,7 @@ def index(request):
 
 def table(request):
     profiles = Profile.objects.order_by("-created_at")
-    paginator = Paginator(profiles, 15)
+    paginator = Paginator(profiles, 50)
     page = paginator.get_page(request.GET.get("page", 1))
     context = {"profiles": page}
     return render(request, "profiles/partials/table.html", context)
@@ -72,7 +72,3 @@ def delete(request, pk):
     report = Profile.objects.get(id=pk)
     report.delete()
     return index(request)
-
-
-def test(request):
-    return render(request, "profiles/test.html")

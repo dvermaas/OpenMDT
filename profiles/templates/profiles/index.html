@@ -2,9 +2,9 @@
 
 {% block content %}
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" style="height:100%;">
             <div class="col-md-12 mt-4">
-                <div class="card">
+                <div class="card" style="height: 1200px;">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span>Profiles</span>
                         <a class="btn p-0" href="/profiles/create/{{ profile.id }}">
@@ -13,25 +13,25 @@
                     </div>
 
                     <!-- Container for the report table -->
-                    <div id="table-container"
-                         hx-get="{% url 'profiles:tabulated' %}?page=1"
-                         hx-trigger="load"
-                         hx-target="#table-container"
-                         hx-swap="outerHTML"
-                         hx-indicator="#loading-indicator">
-
-                        <!-- Loading indicator that appears when data is being fetched -->
-                        <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
-                            <div id="loading-indicator">
-                                <div class="spinner-grow" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Tags</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr hx-get="/profiles/table"
+                                    hx-trigger="revealed"
+                                    hx-swap="afterend">
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 {% endblock content %}

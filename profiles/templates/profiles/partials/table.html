@@ -1,36 +1,18 @@
-<div id="table-container">
-    <table class="table table-striped">
-        <thead>
+{% for profile in profiles %}
+    {% if forloop.last %}
+        <tr hx-get="/profiles/table?page={{ profiles.next_page_number }}"
+            hx-trigger="intersect once"
+            hx-swap="afterend">
+            {% else %}
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Tags</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for profile in profiles %}
-            <tr>
-                <td><a href="/profiles/detail/{{ profile.id }}/">{{ profile.id }}</a></td>
-                <td>{{ profile }}</td>
-                <td>
-                    {% for tag in profile.tags.all %}
-                        {% include "common/partials/tag.html" %}
-                    {% endfor %}
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {% endif %}
 
-    <!-- Pagination Controls -->
-    <div class="pagination">
-        {% for i in profiles.paginator.page_range %}
-            <button class="btn btn-primary m-1 {% if profiles.number == i %} active {% endif %}"
-                    hx-get="{% url 'profiles:tabulated' %}?page={{ i }}"
-                    hx-target="#table-container"
-                    hx-swap="outerHTML">
-                {{ i }}
-            </button>
-        {% endfor %}
-    </div>
-</div>
+<td><a href="/profiles/detail/{{ profile.id }}/">{{ profile.id }}</a></td>
+<td>{{ profile }}</td>
+<td>
+    {% for tag in profile.tags.all %}
+        {% include "common/partials/tag.html" %}
+    {% endfor %}
+</td>
+</tr>
+{% endfor %}
