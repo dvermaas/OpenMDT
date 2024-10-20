@@ -1,10 +1,10 @@
-import hashlib
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.cache import cache
 from django.core.paginator import Paginator
-from django.http import QueryDict, HttpResponse
+from django.http import QueryDict
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.cache import cache_page
+from django.views.decorators.http import etag
 from django.views.generic import CreateView
 
 from profiles.models import Profile
@@ -50,21 +50,19 @@ def table(request):
     return rendered_page
 
 
-def detail(request, pk):
-    cache_key = f"reports/detail/{pk}"
-    cached_page = cache.get(cache_key)
-    print("hmm", cached_page)
-    if cached_page:
-        print("debug", request.headers.get("If-None-Match"))
-        if request.headers.get("If-None-Match") == cached_page["ETag"]:
-            return HttpResponse(status=304)
-        return cached_page
+def detail_etag(request, pk):
+    print("calculating etag", pk)
     report = get_object_or_404(Report, pk=pk)
-    rendered_page = render(request, "reports/detail.html", {"report": report})
-    rendered_page["ETag"] = hashlib.md5(rendered_page.content).hexdigest()
-    rendered_page["Cache-Control"] = "max-age=300, must-revalidate"
-    cache.set(cache_key, rendered_page, 60 * 5)
-    return rendered_page
+    return str(report.last_modified_at)
+
+
+@cache_page(60 * 5)
+@etag(detail_etag)
+def detail(request, pk):
+    print("Cache miss:", pk)
+    report = get_object_or_404(Report, pk=pk)
+    response = render(request, "reports/detail.html", {"report": report})
+    return response
 
 
 def detail_info_form(request, pk):
