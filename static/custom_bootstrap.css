@@ -1,0 +1,17 @@
+/*:root {*/
+/*  --bs-body-bg: #1a1a1a;*/
+/*  --bs-body-color: #f0f0f0;*/
+/*  --bs-primary: #007bff;*/
+/*  --bs-secondary: #6c757d;*/
+/*  --bs-dark: #343a40;*/
+/*}*/
+
+:root {
+  --bs-body-bg: #0b0c0d;
+  --bs-body-color: #f0f0f0;
+  --bs-primary: #007bff;
+  --bs-secondary: #6c757d;
+  --bs-dark: #343a40;
+  /*--bs-dark-rgb:#181a1b;*/
+  --bs-dark-rgb: #007bff;
+}
