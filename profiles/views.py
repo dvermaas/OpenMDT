@@ -15,7 +15,7 @@ def index(request):
 
 def table(request):
     profiles = Profile.objects.order_by("-created_at")
-    paginator = Paginator(profiles, 50)
+    paginator = Paginator(profiles, 30)
     page = paginator.get_page(request.GET.get("page", 1))
     context = {"profiles": page}
     return render(request, "profiles/partials/table.html", context)

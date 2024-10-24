@@ -1,17 +1,24 @@
 /*:root {*/
-/*  --bs-body-bg: #1a1a1a;*/
+/*  --bs-body-bg: #0b0c0d;*/
 /*  --bs-body-color: #f0f0f0;*/
 /*  --bs-primary: #007bff;*/
-/*  --bs-secondary: #6c757d;*/
+/*  --bs-secondary: rgba(255,255,255,0.1);*/
 /*  --bs-dark: #343a40;*/
+/*  !*--bs-dark-rgb:#181a1b;*!*/
+/*  --bs-dark-rgb: #007bff;*/
+/*  --bs-secondary-bg-rgb:rgba(255,255,255,0.1);*/
 /*}*/
 
 :root {
-  --bs-body-bg: #0b0c0d;
-  --bs-body-color: #f0f0f0;
-  --bs-primary: #007bff;
-  --bs-secondary: #6c757d;
-  --bs-dark: #343a40;
-  /*--bs-dark-rgb:#181a1b;*/
-  --bs-dark-rgb: #007bff;
+  --bs-body-bg: #212121;
+}
+
+/*.card {*/
+/*  background-color: rgba(255,255,255,0.1);*/
+/*}*/
+
+.rank-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
 }

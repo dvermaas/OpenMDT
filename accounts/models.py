@@ -6,6 +6,7 @@ class Rank(models.Model):
     title = models.CharField(max_length=64)
     abbreviated_title = models.CharField(max_length=8)
     clearance = models.IntegerField(default=0)
+    icon = models.FileField(upload_to="accounts/rank", blank=True, null=True)
 
     def __str__(self):
         return self.title

@@ -1,5 +1,5 @@
 {% for profile in profiles %}
-    {% if forloop.last %}
+    {% if forloop.last and profiles.next_page_number %}
         <tr hx-get="/profiles/table?page={{ profiles.next_page_number }}"
             hx-trigger="intersect once"
             hx-swap="afterend">
