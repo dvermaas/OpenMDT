@@ -9,10 +9,6 @@
 /*  --bs-secondary-bg-rgb:rgba(255,255,255,0.1);*/
 /*}*/
 
-:root {
-  --bs-body-bg: #212121;
-}
-
 /*.card {*/
 /*  background-color: rgba(255,255,255,0.1);*/
 /*}*/
@@ -62,7 +58,7 @@
         --bs-dark: #f8f9fa;
 
         /* Background and text colors */
-        --bs-body-bg: #212121;
+        --bs-body-bg: #1D2125;
         --bs-body-color: #f8f9fa;
         --bs-body-font-family: "Helvetica Neue", Arial, sans-serif;
         --bs-body-font-size: 1rem;
