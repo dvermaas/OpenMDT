@@ -1,18 +1,3 @@
-/*:root {*/
-/*  --bs-body-bg: #0b0c0d;*/
-/*  --bs-body-color: #f0f0f0;*/
-/*  --bs-primary: #007bff;*/
-/*  --bs-secondary: rgba(255,255,255,0.1);*/
-/*  --bs-dark: #343a40;*/
-/*  !*--bs-dark-rgb:#181a1b;*!*/
-/*  --bs-dark-rgb: #007bff;*/
-/*  --bs-secondary-bg-rgb:rgba(255,255,255,0.1);*/
-/*}*/
-
-/*.card {*/
-/*  background-color: rgba(255,255,255,0.1);*/
-/*}*/
-
 .rank-icon {
     width: 24px;
     height: 24px;
@@ -59,7 +44,7 @@
 
         /* Background and text colors */
         --bs-body-bg: #1D2125;
-        --bs-body-color: #f8f9fa;
+        --bs-body-color: #B6C2CF;
         --bs-body-font-family: "Helvetica Neue", Arial, sans-serif;
         --bs-body-font-size: 1rem;
         --bs-body-line-height: 1.5;
