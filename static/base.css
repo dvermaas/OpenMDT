@@ -44,3 +44,10 @@ button.navbar-toggler {
     border-radius: var(--bs-card-border-radius);
 }
 
+.tile-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+}

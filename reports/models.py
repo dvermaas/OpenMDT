@@ -20,11 +20,6 @@ class Report(models.Model):
     title = models.CharField(max_length=256)
     body = models.TextField(max_length=2048)
     tags = models.ManyToManyField(Tag, blank=True)
-
-    is_warrant = models.BooleanField(default=False)
-    is_processed = models.BooleanField(default=False)
-    is_plead_guilty = models.BooleanField(default=False)
-
     created_at = models.DateTimeField(auto_now_add=True)
     last_modified_at = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -42,6 +37,9 @@ class Suspect(models.Model):
     report = models.ForeignKey(
         Report, on_delete=models.CASCADE, related_name="suspects"
     )
+    is_warrant = models.BooleanField(default=False)
+    is_processed = models.BooleanField(default=False)
+    is_plead_guilty = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     @property

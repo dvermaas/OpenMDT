@@ -1,37 +1,19 @@
 {% load static %}
 
-<div class="tile mt-4" style="background-color: #161A1D;">
+<div class="tile mt-4" style="background-color: #161A1D">
     <div class="card-body">
-        <h5 class="card-title">Announcements</h5>
+        Announcements
     </div>
-    <div class="tile m-1 p-3 d-flex align-items-center">
-        <img class="rounded"
-             src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/13FCD/production/_130896818_donaldtrumpfullmugshot.jpg.webp"
-             height="64" width="64" alt="Mugshot of Donald Trump">
-        <div class="ms-3">
-            <span class="d-block fw-bold">Donald Trump</span>
-            <div class="badge rounded-pill text-bg-primary">Cringe</div>
-            <p class="text-muted mt-1 mb-0 bolo-report">
-                During a traffic stop at Electric Avenue, Donald killed John Cop!
-            </p>
+    {% for announcement in announcements %}
+        <div class="tile m-1 p-2" style="display: flex !important; align-items: center;">
+            <img class="rounded"
+                 src="{{ announcement.rank.icon.url }}"
+                 height="64px" width="64px" alt="lul"
+                 style="object-fit: contain;">
+            <div style="margin-left: 10px;">
+                <span><b>Do not forget to lock your car!</b></span>
+                <p class="tile-desc">So we have been having a problem of stolen cop cars and clearly you guys don't give a fuck</p>
+            </div>
         </div>
-    </div>
+    {% endfor %}
 </div>
-
-<style>
-    /* Ensure the short report is always two lines and truncates with ellipsis if longer */
-    .bolo-report {
-        display: -webkit-box;
-        -webkit-line-clamp: 2; /* Limit to two lines */
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: normal; /* Ensure text wraps */
-        max-width: 100%; /* Prevent overflow */
-    }
-
-    /* Slight adjustment for consistency in layout */
-    .ms-3 {
-        margin-left: 10px !important;
-    }
-</style>

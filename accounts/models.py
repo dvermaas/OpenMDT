@@ -22,3 +22,10 @@ class User(AbstractUser):
                 f"[{self.badge_number}] {self.rank.abbreviated_title} {self.last_name}"
             )
         return f"[{self.badge_number}] {self.last_name}"
+
+
+class Announcement(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=128)
+    body = models.TextField(max_length=2048)
