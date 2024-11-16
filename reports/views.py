@@ -3,8 +3,6 @@ from django.core.cache import cache
 from django.core.paginator import Paginator
 from django.http import QueryDict
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.decorators.cache import cache_page
-from django.views.decorators.http import etag
 from django.views.generic import CreateView
 
 from profiles.models import Profile
@@ -50,14 +48,6 @@ def table(request):
     return rendered_page
 
 
-def detail_etag(request, pk):
-    print("calculating etag", pk)
-    report = get_object_or_404(Report, pk=pk)
-    return str(report.last_modified_at)
-
-
-@cache_page(60 * 5)
-@etag(detail_etag)
 def detail(request, pk):
     print("Cache miss:", pk)
     report = get_object_or_404(Report, pk=pk)
