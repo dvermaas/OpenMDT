@@ -7,7 +7,7 @@
         <tr>
     {% endif %}
 
-<td><a href="/profiles/detail/{{ profile.id }}/">{{ profile.id }}</a></td>
+<td><a href="{% url 'profiles:detail' profile.pk %}">{{ profile.pk }}</a></td>
 <td>{{ profile }}</td>
 <td>
     {% for tag in profile.tags.all %}

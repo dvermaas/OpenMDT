@@ -1,6 +1,8 @@
+{% load humanize %}
+
 <div class="card-header d-flex justify-content-between align-items-center">
     <span>
-        <b>{{ report }}</b> | Created by {{ report.created_by }} at {{ report.created_at }}
+        <b>{{ report }}</b> | {{ report.created_at|naturaltime }} | {{ report.created_by }}
     </span>
     <div>
         <button class="btn p-0"

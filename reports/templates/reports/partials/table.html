@@ -14,7 +14,7 @@
         <tbody>
         {% for report in reports %}
             <tr>
-                <td><a class="badge rounded-pill text-bg-primary" href="/reports/detail/{{ report.id }}/">#{{ report.id }}</a></td>
+                <td><a class="badge rounded-pill text-bg-primary" href="{% url 'reports:detail' report.pk %}">#{{ report.pk }}</a></td>
                 <td>{{ report }}</td>
                 <td>
                     {% for tag in report.tags.all %}
