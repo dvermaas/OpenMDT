@@ -3,14 +3,16 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import RedirectView
-from .api import api
+
 from accounts import views as accounts_views
+from .api import api
 
 urlpatterns = [
     # path("", TemplateView.as_view(template_name="accounts/home.html"), name="home"),
     path("", accounts_views.index, name="home"),
     path("admin/", admin.site.urls),
     path("accounts/", include(("accounts.urls", "accounts"), "accounts")),
+    path("allauth/", include("allauth.urls")),
     path("__debug__/", include("debug_toolbar.urls")),
     path("reports/", include(("reports.urls", "reports"), "reports")),
     path("profiles/", include(("profiles.urls", "profiles"), "profiles")),

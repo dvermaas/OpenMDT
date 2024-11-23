@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9">
+
+                <!-- Report Details Card -->
+                <div class="card mt-4" id="info">
+                    {% include "reports/partials/info.html" %}
+                    <div class="spinner-border text-primary htmx-indicator" role="status" id="spinner">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+
+                <!-- Suspects Card -->
+                {% include "reports/partials/suspects.html" %}
+
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}

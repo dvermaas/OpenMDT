@@ -34,6 +34,10 @@ INSTALLED_APPS = [
     "legislations.apps.LegislationsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
     "django.contrib.contenttypes",
     "django.contrib.humanize",
     "django.contrib.sessions",
@@ -55,6 +59,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
     "django.contrib.auth.middleware.LoginRequiredMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -147,7 +152,7 @@ CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
 # Django Silk
 SILKY_AUTHORISATION = True
 SILKY_META = True
-SILKY_MAX_RECORDED_REQUESTS = 10**4
+SILKY_MAX_RECORDED_REQUESTS = 10 ** 4
 
 # Crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -175,7 +180,6 @@ if env.bool("USE_CACHE", False):
     SESSION_ENGINE = "django.contrib.sessions.backends.cache"
     SESSION_CACHE_ALIAS = "default"
     CACHE_TIMEOUT = 60 * 60 * 24 * 7
-
 
 # Storage
 if env.bool("USE_S3", False):
@@ -206,6 +210,10 @@ if env.bool("USE_S3", False):
             },
         },
     }
+
+# allauth
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 # Logging
 LOGGING = {

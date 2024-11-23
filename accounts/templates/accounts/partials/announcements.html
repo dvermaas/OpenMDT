@@ -5,15 +5,17 @@
         Announcements
     </div>
     {% for announcement in announcements %}
-        <div class="tile m-1 p-2" style="display: flex !important; align-items: center;">
-            <img class="rounded"
-                 src="{{ announcement.rank.icon.url }}"
-                 height="64px" width="64px" alt="lul"
-                 style="object-fit: contain;">
-            <div style="margin-left: 10px;">
-                <span><b>Do not forget to lock your car!</b></span>
-                <p class="tile-desc">So we have been having a problem of stolen cop cars and clearly you guys don't give a fuck</p>
+        <a href="{% url 'common:announcement' announcement.pk %}" style="text-decoration: none; color: inherit;">
+            <div class="tile m-1 p-2" style="display: flex !important; align-items: center;">
+                <img class="rounded"
+                     src="{{ announcement.created_by.rank.icon.url }}"
+                     height="64px" width="64px" alt="lul"
+                     style="object-fit: contain;">
+                <div style="margin-left: 10px;">
+                    <span><b>{{ announcement }}</b></span>
+                    <p class="tile-desc">{{ announcement.body }}</p>
+                </div>
             </div>
-        </div>
+        </a>
     {% endfor %}
 </div>

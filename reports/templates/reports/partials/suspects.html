@@ -15,6 +15,22 @@
             {% for charge in suspect.charges.all %}
                 <span class="badge rounded-pill text-bg-info opacity-100">{{ charge }}</span>
             {% endfor %}
+            <form>
+                <div class="mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="toggle1">
+                        <label class="form-check-label" for="toggle1">Warrant</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="toggle2">
+                        <label class="form-check-label" for="toggle2">Processed</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="toggle3">
+                        <label class="form-check-label" for="toggle3">Pleaded Guilty</label>
+                    </div>
+                </div>
+            </form>
         </div>
         {% if not forloop.last %}
             <hr class="mt-0 mb-0">

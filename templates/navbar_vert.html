@@ -5,7 +5,7 @@
 <!-- SIDEBAR -->
 <div class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px;">
     <a href="/"
-       class="d-flex align-items-center me-md-auto text-white text-decoration-none" style="background-color: #5a23c8">
+       class="d-flex align-items-center me-md-auto text-white text-decoration-none">
         <svg class="bi pe-none me-2" width="40" height="32">
             <use xlink:href="#glasses"></use>
         </svg>
@@ -57,9 +57,9 @@
         <div class="dropdown">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                data-bs-toggle="dropdown" aria-expanded="false">
-{#                <img src="{% static 'rim.png' %}" alt="" width="32" height="32" class="rounded-circle me-2">#}
-{#                <object type="image/svg+xml" data="https://www.svgrepo.com/show/148626/test.svg" class="rank-icon"></object>#}
-{#                <object type="image/svg+xml" data="https://static.wikia.nocookie.net/nopixel/images/e/e6/Site-logo.png/revision/latest?cb=20231216204513" class="rank-icon"></object>#}
+                {#                <img src="{% static 'rim.png' %}" alt="" width="32" height="32" class="rounded-circle me-2">#}
+                {#                <object type="image/svg+xml" data="https://www.svgrepo.com/show/148626/test.svg" class="rank-icon"></object>#}
+                {#                <object type="image/svg+xml" data="https://static.wikia.nocookie.net/nopixel/images/e/e6/Site-logo.png/revision/latest?cb=20231216204513" class="rank-icon"></object>#}
                 <img src="{{ user.rank.icon.url }}" alt="{{ user.rank }}" style="padding-right: 10px;"/>
                 <strong>{{ user }}</strong>
             </a>

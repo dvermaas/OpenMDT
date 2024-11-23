@@ -2,18 +2,20 @@
 
 <div class="tile mt-4" style="background-color: #161A1D">
     <div class="card-body">
-        Recently Processed
+        Processed
     </div>
     {% for suspect in suspects_processed %}
-        <div class="tile m-1 p-2" style="display: flex !important; align-items: center;">
-            <img class="rounded"
-                 src="{{ suspect.profile.picture.url }}"
-                 height="64px" width="64px" alt="lul">
-            <div style="margin-left: 10px;">
-                <span><b>{{ suspect }}</b></span>
-                <div class="ml-1 badge rounded-pill text-bg-primary"> Cringe </div><br>
-                <p class="tile-desc">{{ suspect.report.body }}</p>
+        <a href="{% url 'reports:detail' suspect.report.pk %}" style="text-decoration: none; color: inherit;">
+            <div class="tile m-1 p-2" style="display: flex !important; align-items: center;">
+                <img class="rounded"
+                     src="{{ suspect.profile.picture.url }}"
+                     height="64px" width="64px" alt="lul">
+                <div style="margin-left: 10px;">
+                    <span><b>{{ suspect }}</b></span>
+                    {#                    <div class="ml-1 badge rounded-pill text-bg-primary"> Cringe </div><br>#}
+                    <p class="tile-desc">{{ suspect.report.body }}</p>
+                </div>
             </div>
-        </div>
+        </a>
     {% endfor %}
 </div>

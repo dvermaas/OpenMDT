@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.views.decorators.cache import never_cache
 
 from DjangoPolls import settings
-from accounts.models import User
+from common.models import Announcement
 from reports.models import Suspect
 
 
@@ -33,10 +33,10 @@ def logout_view(request):
 
 
 def index(request):
-    suspects_with_warrant = Suspect.objects.filter(is_warrant=True)[:30]
-    announcements = User.objects.filter(username="admin")
+    suspects_with_warrant = Suspect.objects.filter(is_warrant=True, is_processed=False)[:30]
+    announcements = Announcement.objects.all()[:30]
     suspects_processed = Suspect.objects.filter(is_processed=True)[:30]
     context = {"suspects_with_warrant": suspects_with_warrant,
                "announcements": announcements,
-               "suspects_processed": suspects_processed,}
+               "suspects_processed": suspects_processed, }
     return render(request, "accounts/home.html", context)
