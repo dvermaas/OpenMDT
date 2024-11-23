@@ -28,10 +28,10 @@ jobs:
         run: uv sync
       - name: Dependency Scanner
         run: |
-          uvx pip_audit
+          uvx pip-audit
       - name: Linter
         run: |
-          ruff check --extend-select=E501 --exclude=migrations,settings.py,env,venv,.venv
+          uvx ruff check --extend-select=E501 --exclude=migrations,settings.py,env,venv,.venv
       - name: Unittests
         run: |
           python manage.py test
