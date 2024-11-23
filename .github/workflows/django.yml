@@ -31,7 +31,7 @@ jobs:
           uvx pip-audit
       - name: Linter
         run: |
-          uvx ruff check --extend-select=E501 --exclude=migrations,settings.py,env,venv,.venv
+          uvx ruff check
       - name: Unittests
         run: |
           python manage.py test
