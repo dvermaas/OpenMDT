@@ -14,4 +14,4 @@ To run the application either:
 
 Or:
 - install docker
-- run 'docker compose up --build'
+- run `docker compose up --build`
