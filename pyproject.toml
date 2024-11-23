@@ -1,0 +1,26 @@
+[project]
+name = "djangopolls"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "boto3>=1.34.136",
+    "crispy-bootstrap5>=2024.2",
+    "django-allauth[socialaccount]>=65.2.0",
+    "django-crispy-forms>=2.2",
+    "django-debug-toolbar>=4.3.0",
+    "django-environ>=0.11.2",
+    "django-ninja>=1.1.0",
+    "django-redis>=5.4.0",
+    "django-silk>=5.2.0",
+    "django-simple-history>=3.7.0",
+    "django-storages[s3]>=1.14.3",
+    "django>=5.1.3",
+    "factory_boy>=3.3.1",
+    "gunicorn>=22.0.0",
+    "pillow>=10.4.0",
+    "pip-audit>=2.7.3",
+    "psycopg[binary]>=3.2.3",
+    "ruff>=0.5.2",
+]

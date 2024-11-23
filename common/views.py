@@ -6,4 +6,5 @@ def index(request):
 
 
 def announcement(request, pk):
-    return render(request, "common/announcement.html")
+    Announcement = Announcement.objects.filter(pk=pk)
+    return render(request, "common/announcement.html", )

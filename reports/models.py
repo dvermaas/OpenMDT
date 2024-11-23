@@ -16,6 +16,12 @@ class Evidence(models.Model):
 
 
 class Report(models.Model):
+    # REPORT_TYPES = [
+    #     ("Regular", "Regular"),
+    #     ("Announcement", "Announcement"),
+    # ]
+    # 
+    # type = models.CharField(max_length=32, choices=REPORT_TYPES)
     is_active = models.BooleanField(default=True)
     title = models.CharField(max_length=256)
     body = models.TextField(max_length=2048)
@@ -23,7 +29,6 @@ class Report(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     last_modified_at = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-
     history = HistoricalRecords()
 
     def __str__(self):
