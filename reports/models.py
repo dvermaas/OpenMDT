@@ -16,12 +16,12 @@ class Evidence(models.Model):
 
 
 class Report(models.Model):
-    # REPORT_TYPES = [
-    #     ("Regular", "Regular"),
-    #     ("Announcement", "Announcement"),
-    # ]
-    # 
-    # type = models.CharField(max_length=32, choices=REPORT_TYPES)
+    REPORT_TYPES = [
+        ("Default", "Default"),
+        ("Announcement", "Announcement"),
+    ]
+
+    type = models.CharField(max_length=32, choices=REPORT_TYPES, default="Default")
     is_active = models.BooleanField(default=True)
     title = models.CharField(max_length=256)
     body = models.TextField(max_length=2048)

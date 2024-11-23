@@ -15,5 +15,10 @@ class Profile(models.Model):
 
     history = HistoricalRecords()
 
+    @property
+    def get_picture(self):
+        default = "https://www.elevenforum.com/proxy.php?image=https%3A%2F%2Fi.hizliresim.com%2Fqde7y7b.png&hash=8840a7826b2be91b53ca4f36d7726152"
+        return self.picture.url if self.picture else default
+
     def __str__(self):
         return f"{self.name} {self.surname}"

@@ -64,6 +64,9 @@
                 <strong>{{ user }}</strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                {% if user.is_staff %}
+                    <li><a class="dropdown-item" href="/admin">Admin</a></li>
+                {% endif %}
                 <li><a class="dropdown-item" href="#">Settings</a></li>
                 <li><a class="dropdown-item" href="#">Profile</a></li>
                 <li>

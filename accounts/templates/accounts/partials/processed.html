@@ -8,7 +8,7 @@
         <a href="{% url 'reports:detail' suspect.report.pk %}" style="text-decoration: none; color: inherit;">
             <div class="tile m-1 p-2" style="display: flex !important; align-items: center;">
                 <img class="rounded"
-                     src="{{ suspect.profile.picture.url }}"
+                     src="{{ suspect.profile.get_picture }}"
                      height="64px" width="64px" alt="lul">
                 <div style="margin-left: 10px;">
                     <span><b>{{ suspect }}</b></span>

@@ -214,6 +214,18 @@ if env.bool("USE_S3", False):
 # allauth
 
 SOCIALACCOUNT_LOGIN_ON_GET = True
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'FIELDS': ['id', 'email', 'first_name', 'last_name', 'profile_image'],
+    }
+}
 
 # Logging
 LOGGING = {

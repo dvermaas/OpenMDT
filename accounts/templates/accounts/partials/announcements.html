@@ -5,7 +5,7 @@
         Announcements
     </div>
     {% for announcement in announcements %}
-        <a href="{% url 'common:announcement' announcement.pk %}" style="text-decoration: none; color: inherit;">
+        <a href="{% url 'reports:detail' announcement.pk %}" style="text-decoration: none; color: inherit;">
             <div class="tile m-1 p-2" style="display: flex !important; align-items: center;">
                 <img class="rounded"
                      src="{{ announcement.created_by.rank.icon.url }}"

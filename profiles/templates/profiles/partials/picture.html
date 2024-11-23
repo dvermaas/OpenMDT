@@ -10,11 +10,6 @@
         {% endif %}
     </div>
 
-    {% if profile.picture %}
-        <img src="{{ profile.picture.url }}"
+    <img src="{{ profile.get_picture }}"
          alt="profile-picture" class="img-fluid rounded-bottom" width="300px" height="300px">
-    {% else %}
-        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-             alt="profile-picture" class="img-fluid rounded-bottom" width="300px" height="300px">
-    {% endif %}
 </div>
