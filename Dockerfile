@@ -1,4 +1,4 @@
-FROM python:3.13
+FROM python:3.13-alpine
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
@@ -19,4 +19,4 @@ COPY . .
 
 RUN python manage.py collectstatic --noinput
 
-ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8994", "--workers", "4", "DjangoPolls.wsgi"]
+ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8994", "--workers", "4", "--threads", "2", "DjangoPolls.wsgi"]
