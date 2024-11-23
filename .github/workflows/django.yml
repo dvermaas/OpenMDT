@@ -34,7 +34,7 @@ jobs:
           uvx ruff check
       - name: Unittests
         run: |
-          python manage.py test
+          uvx pytest
   docker:
     needs: build
     runs-on: ubuntu-latest
