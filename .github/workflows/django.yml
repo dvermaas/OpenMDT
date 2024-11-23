@@ -28,7 +28,7 @@ jobs:
         run: uv sync
       - name: Dependency Scanner
         run: |
-          pip-audit
+          uvx pip_audit
       - name: Linter
         run: |
           ruff check --extend-select=E501 --exclude=migrations,settings.py,env,venv,.venv
