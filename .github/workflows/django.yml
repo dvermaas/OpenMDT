@@ -32,11 +32,6 @@ jobs:
         run: uv run ruff check
       - name: Unittests
         run: uv run pytest --junitxml=results.xml
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
-          path: results.xml
   docker:
     needs: build
     runs-on: ubuntu-latest
