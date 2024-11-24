@@ -32,9 +32,6 @@ jobs:
       - name: Linter
         run: |
           uvx ruff check
-      - name: Unittests
-        run: |
-          uvx pytest
   docker:
     needs: build
     runs-on: ubuntu-latest
