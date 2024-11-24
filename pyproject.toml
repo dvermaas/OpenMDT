@@ -22,12 +22,16 @@ dependencies = [
     "pillow>=10.4.0",
     "pip-audit>=2.7.3",
     "psycopg[binary]>=3.2.3",
+]
+
+[dependency-groups]
+dev = [
     "pytest-django>=4.9.0",
-    "ruff>=0.5.2",
+    "ruff>=0.8.0",
 ]
 
 [tool.pytest.ini_options]
-pythonpath = [".venv"]
+pythonpath = ".venv"
 addopts = ["--import-mode=importlib", ]
 DJANGO_SETTINGS_MODULE = "DjangoPolls.settings"
 python_files = [
@@ -35,3 +39,4 @@ python_files = [
     "test_*.py",
     "*_tests.py"
 ]
+

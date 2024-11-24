@@ -15,20 +15,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version-file: pyproject.toml
       - name: Install Dependencies
-        run: |
-          pip install uv
-          uv sync
+        run: uv sync
       - name: Dependency Scanner
-        run: pip-audit
+        run: uv run pip-audit
       - name: Linter
-        run: ruff check
+        run: uv run ruff check
       - name: Unittests
-        run: python manage.py test
+        run: uv run pytest
   docker:
     needs: build
     runs-on: ubuntu-latest
