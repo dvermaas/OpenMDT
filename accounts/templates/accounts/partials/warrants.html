@@ -1,22 +1,22 @@
 {% load static %}
 
-<div class="tile my-4" style="background-color: #161A1D;height:calc(100% - 48px);">
+<div class="tile my-4" style="background-color: #161A1D;height:calc(100vh - 48px);">
     <div class="card-body">
         Warrants
     </div>
-    {#    <div class="scrollable" style="overflow-y: auto;flex-grow:1;height:calc(100% - 870px);">#}
-    {#        {% for suspect in suspects_with_warrant %}#}
-    {#            <a href="{% url 'reports:detail' suspect.report.pk %}" style="text-decoration: none; color: inherit;">#}
-    {#                <div class="tile m-1 p-2" style="display: flex !important; align-items: center;">#}
-    {#                    <img class="rounded"#}
-    {#                         src="{{ suspect.profile.get_picture }}"#}
-    {#                         height="64px" width="64px" alt="lul">#}
-    {#                    <div style="margin-left: 10px;">#}
-    {#                        <span><b>{{ suspect }}</b></span>#}
-    {#                        <p class="tile-desc">{{ suspect.report.body }}</p>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#            </a>#}
-    {#        {% endfor %}#}
-    {#    </div>#}
+    <div style="height: calc(100vh - 108px);overflow-y: auto;scrollbar-width:none">
+        {% for suspect in suspects_with_warrant %}
+            <a href="{% url 'reports:detail' suspect.report.pk %}" style="text-decoration: none; color: inherit;">
+                <div class="tile m-1 p-2" style="display: flex !important; align-items: center;">
+                    <img class="rounded"
+                         src="{{ suspect.profile.get_picture }}"
+                         height="64px" width="64px" alt="lul">
+                    <div style="margin-left: 10px;">
+                        <span><b>{{ suspect }}</b></span>
+                        <p class="tile-desc">{{ suspect.report.body }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
 </div>

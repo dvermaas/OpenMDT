@@ -32,9 +32,9 @@ def logout_view(request):
 
 
 def index(request):
-    suspects_with_warrant = Suspect.objects.filter(is_warrant=True, is_processed=False)[:16]
-    announcements = Report.objects.filter(type="Announcement")[:8]
-    suspects_processed = Suspect.objects.filter(is_processed=True)[:8]
+    suspects_with_warrant = Suspect.objects.filter(is_warrant=True, is_processed=False)[:20]
+    announcements = Report.objects.filter(type="Announcement")[:20]
+    suspects_processed = Suspect.objects.filter(is_processed=True)[:20]
     context = {"suspects_with_warrant": suspects_with_warrant,
                "announcements": announcements,
                "suspects_processed": suspects_processed, }
