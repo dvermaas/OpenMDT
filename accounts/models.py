@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.templatetags.static import static
 
 
 class Rank(models.Model):
@@ -15,6 +16,10 @@ class Rank(models.Model):
 class User(AbstractUser):
     rank = models.ForeignKey(Rank, on_delete=models.CASCADE, blank=True, null=True)
     badge_number = models.IntegerField(blank=True, null=True)
+
+    @property
+    def get_picture(self):
+        return self.rank.icon.url if self.rank else static('/ranks/LSPD-Captain.svg')
 
     def __str__(self):
         if self.rank:

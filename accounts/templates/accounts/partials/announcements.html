@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="tile mt-4" style="background-color: #161A1D">
+<div class="tile mt-4" style="background-color: #161A1D;height:calc(100% - 48px);">
     <div class="card-body">
         Announcements
     </div>
@@ -8,7 +8,7 @@
         <a href="{% url 'reports:detail' announcement.pk %}" style="text-decoration: none; color: inherit;">
             <div class="tile m-1 p-2" style="display: flex !important; align-items: center;">
                 <img class="rounded"
-                     src="{{ announcement.created_by.rank.icon.url }}"
+                     src="{{ announcement.created_by.get_picture }}"
                      height="64px" width="64px" alt="lul"
                      style="object-fit: contain;">
                 <div style="margin-left: 10px;">

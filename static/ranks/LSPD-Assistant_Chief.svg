@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="48"
+   height="15"
+   version="1.0"
+   id="svg68"
+   sodipodi:docname="LSPD-Assistant Chief.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview70"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="31.492076"
+     inkscape:cx="24.815766"
+     inkscape:cy="9.3833128"
+     inkscape:window-width="2560"
+     inkscape:window-height="1411"
+     inkscape:window-x="2551"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg68" />
+  <defs
+     id="defs24">
+    <linearGradient
+       id="a">
+      <stop
+         offset="0"
+         stop-color="#777"
+         id="stop2" />
+      <stop
+         offset=".5"
+         stop-color="#fff"
+         id="stop4" />
+      <stop
+         offset="1"
+         stop-color="#777"
+         id="stop6" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#a"
+       id="p"
+       x1="403.2818"
+       x2="428.90967"
+       y1="433.53098"
+       y2="497.43515"
+       gradientTransform="matrix(3.40317,0,0,3.40317,219.787,-1175.353)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#a"
+       id="o"
+       x1="412.39908"
+       x2="426.53271"
+       y1="402.39682"
+       y2="433.86307"
+       gradientTransform="matrix(3.40317,0,0,3.40317,219.787,-1175.353)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#a"
+       id="n"
+       x1="299.14307"
+       x2="376.45349"
+       y1="428.98868"
+       y2="414.41544"
+       gradientTransform="matrix(0.96818,3.26254,-3.26254,0.96818,2615.86,-1410.093)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#a"
+       id="m"
+       x1="289.3551"
+       x2="352.90753"
+       y1="417.233"
+       y2="456.47745"
+       gradientTransform="matrix(3.40317,0,0,3.40317,219.787,-1175.353)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#a"
+       id="l"
+       x1="394.78284"
+       x2="374.45355"
+       y1="476.92804"
+       y2="437.14233"
+       gradientTransform="matrix(3.40317,0,0,3.40317,219.787,-1175.353)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#a"
+       id="k"
+       x1="403.2818"
+       x2="428.90967"
+       y1="433.53098"
+       y2="497.43515"
+       gradientTransform="matrix(3.40317,0,0,3.40317,-410.708,-1175.353)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#a"
+       id="j"
+       x1="412.39908"
+       x2="426.53271"
+       y1="402.39682"
+       y2="433.86307"
+       gradientTransform="matrix(3.40317,0,0,3.40317,-410.708,-1175.353)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#a"
+       id="i"
+       x1="299.14307"
+       x2="376.45349"
+       y1="428.98868"
+       y2="414.41544"
+       gradientTransform="matrix(0.96818,3.26254,-3.26254,0.96818,1985.365,-1410.093)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#a"
+       id="h"
+       x1="289.3551"
+       x2="352.90753"
+       y1="417.233"
+       y2="456.47745"
+       gradientTransform="matrix(3.40317,0,0,3.40317,-410.708,-1175.353)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#a"
+       id="g"
+       x1="394.78284"
+       x2="374.45355"
+       y1="476.92804"
+       y2="437.14233"
+       gradientTransform="matrix(3.40317,0,0,3.40317,-410.708,-1175.353)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#a"
+       id="f"
+       x1="403.2818"
+       x2="428.90967"
+       y1="433.53098"
+       y2="497.43515"
+       gradientTransform="matrix(3.40317,0,0,3.40317,-1041.285,-1175.353)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#a"
+       id="e"
+       x1="412.39908"
+       x2="426.53271"
+       y1="402.39682"
+       y2="433.86307"
+       gradientTransform="matrix(3.40317,0,0,3.40317,-1041.285,-1175.353)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#a"
+       id="d"
+       x1="299.14307"
+       x2="376.45349"
+       y1="428.98868"
+       y2="414.41544"
+       gradientTransform="matrix(0.96818,3.26254,-3.26254,0.96818,1354.788,-1410.093)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#a"
+       id="c"
+       x1="289.3551"
+       x2="352.90753"
+       y1="417.233"
+       y2="456.47745"
+       gradientTransform="matrix(3.40317,0,0,3.40317,-1041.285,-1175.353)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#a"
+       id="b"
+       x1="394.78284"
+       x2="374.45355"
+       y1="476.92804"
+       y2="437.14233"
+       gradientTransform="matrix(3.40317,0,0,3.40317,-1041.285,-1175.353)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     id="g927"
+     transform="matrix(0.02539609,0,0,0.02539609,0.09991541,0.11502017)">
+    <g
+       id="g901">
+      <path
+         fill="#ffffff"
+         fill-rule="evenodd"
+         d="m 236.96975,219.68934 77.35657,-214.2133 77.73644,214.5624 223.96137,0.8679 -175.4122,131.65598 82.07129,224.31531 L 314.8596,433.14745 112.43749,577.09646 191.21944,354.85708 5.403217,220.899 Z"
+         id="path26" />
+      <path
+         fill="url(#b)"
+         fill-rule="evenodd"
+         d="M 314.8596,433.14745 112.43749,577.09646 314.04447,312.47864 Z"
+         id="path28"
+         style="fill:url(#b)" />
+      <path
+         fill="url(#c)"
+         fill-rule="evenodd"
+         d="M 314.03287,312.46553 191.21944,354.85708 5.403217,220.899 Z"
+         id="path30"
+         style="fill:url(#c)" />
+      <path
+         fill="url(#d)"
+         fill-rule="evenodd"
+         d="M 314.03498,312.49408 236.32853,219.36489 313.58917,7.58338 Z"
+         id="path32"
+         style="fill:url(#d)" />
+      <path
+         fill="url(#e)"
+         fill-rule="evenodd"
+         d="m 392.06276,220.03844 223.96137,0.8679 -301.97458,91.58488 z"
+         id="path34"
+         style="fill:url(#e)" />
+      <path
+         fill="url(#f)"
+         fill-rule="evenodd"
+         d="M 440.61193,352.56232 522.68322,576.87763 314.0487,312.50783 Z"
+         id="path36"
+         style="fill:url(#f)" />
+      <path
+         fill="none"
+         stroke="#000000"
+         stroke-width="6.80633"
+         d="m 236.96975,219.68934 77.35657,-214.2133 77.73644,214.5624 223.96137,0.8679 -175.4122,131.65598 82.07129,224.31531 L 314.8596,433.14745 112.43749,577.09646 191.21944,354.85708 5.403217,220.899 Z"
+         id="path38" />
+    </g>
+    <g
+       id="g892">
+      <path
+         fill="#ffffff"
+         fill-rule="evenodd"
+         d="m 867.54675,219.68934 77.35657,-214.2133 77.73648,214.5624 223.9613,0.8679 -175.4122,131.65598 82.0713,224.31531 L 945.4366,433.14745 743.01449,577.09646 821.79644,354.85708 635.98022,220.899 Z"
+         id="path40" />
+      <path
+         fill="url(#g)"
+         fill-rule="evenodd"
+         d="M 945.4366,433.14745 743.01449,577.09646 944.62147,312.47864 Z"
+         id="path42"
+         style="fill:url(#g)" />
+      <path
+         fill="url(#h)"
+         fill-rule="evenodd"
+         d="M 944.60987,312.46553 821.79644,354.85708 635.98022,220.899 Z"
+         id="path44"
+         style="fill:url(#h)" />
+      <path
+         fill="url(#i)"
+         fill-rule="evenodd"
+         d="M 944.61198,312.49408 866.90553,219.36489 944.16617,7.58338 Z"
+         id="path46"
+         style="fill:url(#i)" />
+      <path
+         fill="url(#j)"
+         fill-rule="evenodd"
+         d="m 1022.6398,220.03844 223.9613,0.8679 -301.97455,91.58488 z"
+         id="path48"
+         style="fill:url(#j)" />
+      <path
+         fill="url(#k)"
+         fill-rule="evenodd"
+         d="m 1071.1889,352.56232 82.0713,224.31531 -208.6345,-264.3698 z"
+         id="path50"
+         style="fill:url(#k)" />
+      <path
+         fill="none"
+         stroke="#000000"
+         stroke-width="6.80633"
+         d="m 867.54675,219.68934 77.35657,-214.2133 77.73648,214.5624 223.9613,0.8679 -175.4122,131.65598 82.0713,224.31531 L 945.4366,433.14745 743.01449,577.09646 821.79644,354.85708 635.98022,220.899 Z"
+         id="path52" />
+    </g>
+    <g
+       id="g883">
+      <path
+         fill="#ffffff"
+         fill-rule="evenodd"
+         d="m 1498.0418,219.68934 77.3565,-214.2133 77.7365,214.5624 223.9613,0.8679 -175.4122,131.65598 82.0713,224.31531 L 1575.9316,433.14745 1373.5095,577.09646 1452.2914,354.85708 1266.4752,220.899 Z"
+         id="path54" />
+      <path
+         fill="url(#l)"
+         fill-rule="evenodd"
+         d="m 1575.9316,433.14745 -202.4221,143.94901 201.607,-264.61782 z"
+         id="path56"
+         style="fill:url(#l)" />
+      <path
+         fill="url(#m)"
+         fill-rule="evenodd"
+         d="M 1575.1049,312.46553 1452.2914,354.85708 1266.4752,220.899 Z"
+         id="path58"
+         style="fill:url(#m)" />
+      <path
+         fill="url(#n)"
+         fill-rule="evenodd"
+         d="M 1575.107,312.49408 1497.4005,219.36489 1574.6612,7.58338 Z"
+         id="path60"
+         style="fill:url(#n)" />
+      <path
+         fill="url(#o)"
+         fill-rule="evenodd"
+         d="m 1653.1348,220.03844 223.9613,0.8679 -301.9745,91.58488 z"
+         id="path62"
+         style="fill:url(#o)" />
+      <path
+         fill="url(#p)"
+         fill-rule="evenodd"
+         d="m 1701.6839,352.56232 82.0713,224.31531 -208.6345,-264.3698 z"
+         id="path64"
+         style="fill:url(#p)" />
+      <path
+         fill="none"
+         stroke="#000000"
+         stroke-width="6.80633"
+         d="m 1498.0418,219.68934 77.3565,-214.2133 77.7365,214.5624 223.9613,0.8679 -175.4122,131.65598 82.0713,224.31531 L 1575.9316,433.14745 1373.5095,577.09646 1452.2914,354.85708 1266.4752,220.899 Z"
+         id="path66" />
+    </g>
+  </g>
+</svg>
