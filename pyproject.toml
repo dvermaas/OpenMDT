@@ -44,7 +44,7 @@ extend-select = ["E", "W"]
 [tool.pytest.ini_options]
 pythonpath = ".venv"
 addopts = ["--import-mode=importlib", ]
-DJANGO_SETTINGS_MODULE = "DjangoPolls.settings"
+DJANGO_SETTINGS_MODULE = "OpenMDT.settings"
 python_files = [
     "tests.py",
     "test_*.py",

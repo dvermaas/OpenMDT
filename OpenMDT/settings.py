@@ -66,7 +66,7 @@ MIDDLEWARE = [
     "simple_history.middleware.HistoryRequestMiddleware",
 ]
 
-ROOT_URLCONF = "DjangoPolls.urls"
+ROOT_URLCONF = "OpenMDT.urls"
 
 TEMPLATES = [
     {
@@ -86,7 +86,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "DjangoPolls.wsgi.application"
+WSGI_APPLICATION = "OpenMDT.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

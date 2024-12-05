@@ -26,4 +26,4 @@ RUN python manage.py collectstatic --noinput
 
 ENTRYPOINT []
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8994", "--workers", "4", "--threads", "2", "DjangoPolls.wsgi"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8994", "--workers", "4", "--threads", "2", "OpenMDT.wsgi"]

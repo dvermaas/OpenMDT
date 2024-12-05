@@ -10,7 +10,7 @@ services:
       - POSTGRES_PASSWORD=testme123
   webapp:
     build: .
-    image: djangopolls:latest
+    image: openmdt:latest
     container_name: django
     environment:
       - DEBUG=on
