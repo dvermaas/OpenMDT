@@ -1,7 +1,7 @@
 [project]
-name = "djangopolls"
+name = "OpenMDT"
 version = "0.1.0"
-description = "Add your description here"
+description = "backend server for OpenMDT webapp"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [

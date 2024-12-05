@@ -1,7 +1,7 @@
 import factory
 from factory.fuzzy import FuzzyChoice
 
-from DjangoPolls.factories import UserFactory
+from accounts.factories import UserFactory
 from legislations.factories import LegislationFactory
 from profiles.factories import ProfileFactory
 from reports.models import Report, Suspect, Charge

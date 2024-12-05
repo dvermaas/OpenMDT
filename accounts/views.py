@@ -1,9 +1,9 @@
+from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_not_required
 from django.shortcuts import render, redirect
 from django.views.decorators.cache import never_cache
 
-from DjangoPolls import settings
 from reports.models import Suspect, Report
 
 
