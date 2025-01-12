@@ -35,26 +35,26 @@ services:
     depends_on:
       - db
       - redis
-      - minio
+  #      - minio
   redis:
     image: redis:alpine
     container_name: redis
     ports:
       - "6379:6379"
-  av:
-    image: clamav/clamav:stable_base
-    container_name: av
-    volumes:
-      - ./data/av:/var/lib/clamav
-  minio:
-    image: 'bitnami/minio:latest'
-    container_name: minio
-    ports:
-      - '9000:9000'
-      - '9001:9001'
-    environment:
-      - MINIO_ROOT_USER=admin
-      - MINIO_ROOT_PASSWORD=testme123
-      - MINIO_DEFAULT_BUCKETS=mdt-ont
-    volumes:
-      - ./data/minio:/bitnami/minio/data
+#  av:
+#    image: clamav/clamav:stable_base
+#    container_name: av
+#    volumes:
+#      - ./data/av:/var/lib/clamav
+#  minio:
+#    image: 'bitnami/minio:latest'
+#    container_name: minio
+#    ports:
+#      - '9000:9000'
+#      - '9001:9001'
+#    environment:
+#      - MINIO_ROOT_USER=admin
+#      - MINIO_ROOT_PASSWORD=testme123
+#      - MINIO_DEFAULT_BUCKETS=mdt-ont
+#    volumes:
+#      - ./data/minio:/bitnami/minio/data

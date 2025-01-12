@@ -28,9 +28,11 @@
                     {% endif %}
                     <button type="submit" class="btn btn-primary">Submit</button>
 
-                    <a href="{% provider_login_url 'google' %}" class="btn btn-primary">
-                        Login with Google
-                    </a>
+                    {% if "google" in socialaccount_providers %}
+                        <a href="{% provider_login_url 'google' %}" class="btn btn-primary">
+                            Login with Google
+                        </a>
+                    {% endif %}
                 </form>
             </div>
         </div>
