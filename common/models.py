@@ -21,3 +21,7 @@ class Notification(models.Model):
 
     def __str__(self):
         return self.title
+
+class GenericFile(models.Model):
+    file = models.FileField(upload_to="files")
+    created_at = models.DateTimeField(auto_now_add=True)
