@@ -11,8 +11,9 @@ class Category(models.Model):
 class Legislation(models.Model):
     title = models.CharField(max_length=256)
     description = models.TextField(max_length=1024)
-    time = models.IntegerField()
-    fine = models.IntegerField()
+    time = models.IntegerField(default=0)
+    fine = models.IntegerField(default=0)
+    points = models.IntegerField(default=0)
     type = models.CharField(
         max_length=32,
         choices=[

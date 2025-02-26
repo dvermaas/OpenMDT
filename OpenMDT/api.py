@@ -6,3 +6,4 @@ api = NinjaAPI()
 
 api.add_router("/reports/", reports_router)
 api.add_router("/profiles/", "profiles.api.router")
+api.add_router("/legislations/", "legislations.api.router")
